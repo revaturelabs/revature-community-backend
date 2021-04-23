@@ -1,15 +1,12 @@
-package com.revature.testcontroller;
+package com.revature.controllers;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-
-import org.junit.Before;
+import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @SpringBootTest
@@ -21,7 +18,7 @@ class Test1ApplicationTests {
 	@InjectMocks
 	private TestController tc;
 	
-	@Before
+	@Before(value = "")
 	public void setUp() throws Exception{
 		mockMvc = MockMvcBuilders.standaloneSetup(tc).build();
 	}
