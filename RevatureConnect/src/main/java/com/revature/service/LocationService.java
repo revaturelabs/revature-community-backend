@@ -21,6 +21,11 @@ public class LocationService{
 		return locations;
 	}
 	
+	public Location save(Location location) {
+		Location loc = (Location)locRepo.save(location);
+		return loc;
+	}
+	
 	
 	
 }

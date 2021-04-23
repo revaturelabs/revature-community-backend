@@ -2,10 +2,14 @@ package com.revature.controllers;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.Location;
@@ -22,6 +26,17 @@ public class LocationController {
 		List <Location> locations = locServ.findAll();
 		
 		return new ResponseEntity<>(locations, HttpStatus.OK);
+		
+	}
+	
+	@PostMapping("/locationspost")
+	public ResponseEntity<Location> getAllLocationsPost(@RequestBody Location location){
+		
+		Location test;
+		test = locServ.save(location);
+		System.out.println(test);
+		
+		return new ResponseEntity<>(test, HttpStatus.OK);
 		
 	}
 	
