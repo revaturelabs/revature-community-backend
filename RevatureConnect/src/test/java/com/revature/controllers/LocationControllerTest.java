@@ -55,6 +55,19 @@ public class LocationControllerTest {
 				contentType(org.springframework.http.MediaType.APPLICATION_JSON)).
 		andExpect(jsonPath("$", hasSize(1))).
 			andDo(print()); 
+
+  @Test
+	void getAllLocations() throws Exception {
+		List<Location> locations = new ArrayList<>();
+		locations.add(new Location(5, "Houston, Texas"));
+		locations.add(new Location(5, "Jackson, New Jersey"));
+		when(locationService.findAll()).thenReturn(locations);
+
+		mockMvc.perform(MockMvcRequestBuilders.get("/locations")
+				.contentType(org.springframework.http.MediaType.APPLICATION_JSON)).
+		andExpect(jsonPath("$", hasSize(2)))
+				.andDo(print());
+
 	}
 	
 }
