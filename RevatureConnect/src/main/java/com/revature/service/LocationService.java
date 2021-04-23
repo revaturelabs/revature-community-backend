@@ -21,6 +21,11 @@ public class LocationService{
 		return locations;
 	}
 	
+	public List<Location> remove(int id) { 
+		locRepo.deleteById(id);
+		return locRepo.findAll(); 
+	}
+	
 	
 	
 }
