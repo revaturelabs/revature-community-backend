@@ -41,6 +41,8 @@ public class LocationController {
 		
 		return new ResponseEntity<>(test, HttpStatus.OK);
 		
+	}
+		
 	@DeleteMapping("/remove/{id}")
 	public ResponseEntity<List<Location>> removeLoc1ation(@PathVariable ("id") int id) { 
 		return new ResponseEntity<>(locServ.remove(id), HttpStatus.OK); 
