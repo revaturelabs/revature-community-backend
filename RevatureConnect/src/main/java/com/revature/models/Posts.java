@@ -1,7 +1,9 @@
-package com.revature.model;
+package com.revature.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,8 +32,9 @@ public class Posts {
 		@Column(name = "location_id")
 		private String locationId; 
 		
-		@Column(name = "category_id")
-		private String categoryId; 
+		@Enumerated(EnumType.STRING)
+		@Column(name = "category_type")
+		private CategoryType categoryType; 
 		
 		
 		
