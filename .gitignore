@@ -1,3 +1,16 @@
+/.metadata/
+
+./RevatureConnect/.mvn/
+./RevatureConnect/.settings/
+./RevatureConnect/target/
+./RevatureConnect/.project
+./RevatureConnect/.classpath
+./RevatureConnect/.factorypath
+./RevatureConnect/HELP.md
+.DS_Store
+
+
+
 # Compiled class file
 *.class
 
