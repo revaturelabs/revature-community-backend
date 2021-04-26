@@ -12,6 +12,7 @@ public @Data class Location {
 	
 	@Id
 	private String location;
+	
 	private int id;
 	
 	
@@ -19,6 +20,19 @@ public @Data class Location {
 	public Location(int id, String location) {
 		this.id=id;
 		this.location=location;
+	}
+	
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 
