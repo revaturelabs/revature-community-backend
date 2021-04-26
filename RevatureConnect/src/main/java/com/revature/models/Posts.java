@@ -23,7 +23,7 @@ import lombok.Setter;
 public class Posts {
 		
 		@Id
-		@Column(name = "id")
+		@Column(name = "post_id")
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		private int id;
 		
@@ -33,11 +33,10 @@ public class Posts {
 		@Column(name = "content")
 		private String content;
 		
-		@Column(name = "location_id")
 
 		@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	    @JoinColumn(name = "id", nullable = false)
-		private String locationId; 
+		private Location location; 
 		
 		@Enumerated(EnumType.STRING)
 		@Column(name = "category_type")
