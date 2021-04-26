@@ -1,4 +1,4 @@
-package com.revature.controller;
+package com.revature.controllers;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.model.Response;
+import com.revature.models.Response;
 import com.revature.service.ResponseService;
 
 @CrossOrigin("*")
