@@ -41,13 +41,14 @@ public class LocationControllerTest {
 		locations.add(new Location(1, "Sydney, Australia"));
 		locations.add(new Location(2, "LizardLick, Texas")); 
 		locations.remove(0); 
-		when(locationService.remove(1)).thenReturn(locations);
+		when(locationService.remove("Sydney, Australia")).thenReturn(locations);
 		mockMvc.perform(MockMvcRequestBuilders.delete("/remove/1").
 				contentType(org.springframework.http.MediaType.APPLICATION_JSON)).
 		andExpect(jsonPath("$", hasSize(1))).
 			andDo(print()); 
+	}
 
-  @Test
+    @Test
 	void getAllLocations() throws Exception {
 		List<Location> locations = new ArrayList<>();
 		locations.add(new Location(5, "Houston, Texas"));

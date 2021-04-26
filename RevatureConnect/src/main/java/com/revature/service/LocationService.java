@@ -24,9 +24,10 @@ public class LocationService{
 	public Location save(Location location) {
 		Location loc = (Location)locRepo.save(location);
 		return loc;
+	}
 
-	public List<Location> remove(int id) { 
-		locRepo.deleteById(id);
+	public List<Location> remove(String location) { 
+		locRepo.deleteById(location);
 		return locRepo.findAll(); 
 
 	}
