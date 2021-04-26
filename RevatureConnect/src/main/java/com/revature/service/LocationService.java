@@ -26,8 +26,8 @@ public class LocationService{
 		return loc;
 	}
 
-	public List<Location> remove(int id) { 
-		locRepo.deleteById(id);
+	public List<Location> remove(String location) { 
+		locRepo.deleteById(location);
 		return locRepo.findAll(); 
 
 	}
