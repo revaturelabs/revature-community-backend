@@ -59,7 +59,6 @@ public class LocationControllerTest {
 				.contentType(org.springframework.http.MediaType.APPLICATION_JSON)).
 		andExpect(jsonPath("$", hasSize(2)))
 				.andDo(print());
-
 	}
 	
 	@Test
@@ -69,8 +68,7 @@ public class LocationControllerTest {
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/locationspost")
 				.contentType(org.springframework.http.MediaType.APPLICATION_JSON).content(toJson(location)))
-				.andExpect(status().isOk()).andExpect(content().contentType("application/json")).andDo(print());
-		
+				.andExpect(status().isOk()).andExpect(content().contentType("application/json")).andDo(print());	
 	}
 
 	private String toJson(Location location) throws JsonProcessingException {

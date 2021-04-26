@@ -36,7 +36,7 @@ public class ResponseController {
 
         Response r = new Response(); 
 
-        r.setContent(response.getContent()); 
+        r.setContent(response.getContent());
         r.setPostId(response.getPostId());
         Response responseObject = rservice.submitResponse(response);
         return new ResponseEntity<Response>(responseObject, HttpStatus.OK);

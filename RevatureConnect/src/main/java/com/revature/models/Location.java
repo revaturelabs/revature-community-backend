@@ -1,6 +1,7 @@
 package com.revature.models;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.Data;
 @Table(name = "Locations")
 public  class Location {
 	
+	@Id
 	private int id;
 	private String location;
 	
