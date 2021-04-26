@@ -15,7 +15,7 @@ public class ResponseService {
     @Autowired
     private ResponseRepository rrepo;
 
-    public List<Response> getResponsesByPostId(Integer postId) {
+    public List<Response> getResponsesByPostId(long postId) {
         return rrepo.getResponsesByPostId(postId); 
     }
 
