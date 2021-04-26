@@ -31,12 +31,6 @@ public class LocationService {
 		Location loc = locRepo.save(location);
 		return loc;
 	}
-
-	public List<Location> remove(String location) { 
-		locRepo.deleteById(location);
-		return locRepo.findAll(); 
-
-	}
 	
 	/*public List<Post> findAllByCategory(String category) {
 		List<Post> posts = locRepo.findAllByCategory(category);
