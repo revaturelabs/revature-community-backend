@@ -12,13 +12,16 @@ import lombok.Data;
 @Table(name = "Locations")
 public @Data class Location {
 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+
 	private String location;
 
 	public Location() {
 	}
+
 
 	public Location(Integer id, String location) {
 		this.id = id;
@@ -27,6 +30,7 @@ public @Data class Location {
 
 	public Location(String name) {
 		this.location = name;
+
 	}
 
 }

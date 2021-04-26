@@ -38,12 +38,14 @@ public class LocationController {
 		Location locToSave = new Location(nameLoc);
 		Location locSaved = locServ.save(locToSave);
 		
+
 		return new ResponseEntity<>(locSaved, HttpStatus.OK);
 	}
 		
 	@DeleteMapping("/remove/{name}")
 	public Map<String, Boolean> removeLocation(@PathVariable ("name") String name) throws ResourceNotFoundException { 
 		return locServ.remove(name);
+
 
 	}
 	

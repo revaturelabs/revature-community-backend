@@ -30,6 +30,7 @@ public class LocationService {
 	public Location save(Location location) {
 		Location loc = (Location) locRepo.save(location);
 		return loc;
+
 	}
 
 	// use to remove a location from the db
