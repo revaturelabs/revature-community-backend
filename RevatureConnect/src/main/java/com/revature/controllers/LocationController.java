@@ -1,8 +1,7 @@
 package com.revature.controllers;
 
 import java.util.List;
-
-import javax.websocket.server.PathParam;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,13 +9,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+=======
+>>>>>>> 4d701f44cc1c8d5a40a240ed859f70d3a91b8586
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Location;
 import com.revature.service.LocationService;
 
@@ -43,19 +47,17 @@ public class LocationController {
 		
 	}
 	
-	@PostMapping("/locationspost")
-	public ResponseEntity<Location> getAllLocationsPost(@RequestBody Location location){
+	@PostMapping("/locationspost/{name}")
+	public ResponseEntity<Location> createNewLocation(@PathVariable(value="name") String nameLoc){
+		Location locToSave = new Location(nameLoc);
+		Location locSaved = locServ.save(locToSave);
 		
-		Location test;
-		test = locServ.save(location);
-		System.out.println(test);
-		
-		return new ResponseEntity<>(test, HttpStatus.OK);
+		return new ResponseEntity<>(locSaved, HttpStatus.OK);
 	}
 		
-	@DeleteMapping("/remove/{id}")
-	public ResponseEntity<List<Location>> removeLoc1ation(@PathVariable ("id") String id) { 
-		return new ResponseEntity<>(locServ.remove(id), HttpStatus.OK); 
+	@DeleteMapping("/remove/{name}")
+	public Map<String, Boolean> removeLoc1ation(@PathVariable ("name") String name) throws ResourceNotFoundException { 
+		return locServ.remove(name);
 
 	}
 	
