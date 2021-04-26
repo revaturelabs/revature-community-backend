@@ -1,29 +1,30 @@
 package com.revature.controllers;
 
 import java.util.List;
-
-import javax.websocket.server.PathParam;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Location;
 import com.revature.service.LocationService;
 
 @RestController
+@RequestMapping("/locations")
 public class LocationController {
 
 	@Autowired
 	LocationService locServ;
 	
-	@GetMapping("/locations")
+	@GetMapping("/")
 	public ResponseEntity<List<Location>> getAllLocations(){
 		
 		List <Location> locations = locServ.findAll();
@@ -32,19 +33,19 @@ public class LocationController {
 		
 	}
 	
-	@PostMapping("/locationspost")
-	public ResponseEntity<Location> getAllLocationsPost(@RequestBody Location location){
+	@PostMapping("/add/{name}")
+	public ResponseEntity<Location> createNewLocation(@PathVariable(value="name") String nameLoc){
+		Location locToSave = new Location(nameLoc);
+		Location locSaved = locServ.save(locToSave);
 		
-		Location test;
-		test = locServ.save(location);
-		System.out.println(test);
-		
-		return new ResponseEntity<>(test, HttpStatus.OK);
+
+		return new ResponseEntity<>(locSaved, HttpStatus.OK);
 	}
 		
-	@DeleteMapping("/remove/{id}")
-	public ResponseEntity<List<Location>> removeLoc1ation(@PathVariable ("id") int id) { 
-		return new ResponseEntity<>(locServ.remove(id), HttpStatus.OK); 
+	@DeleteMapping("/remove/{name}")
+	public Map<String, Boolean> removeLocation(@PathVariable ("name") String name) throws ResourceNotFoundException { 
+		return locServ.remove(name);
+
 
 	}
 	
