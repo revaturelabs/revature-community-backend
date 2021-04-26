@@ -22,7 +22,7 @@ public class LocationService{
 	}
 	
 	public Location save(Location location) {
-		Location loc = (Location)locRepo.save(location);
+		Location loc = locRepo.save(location);
 		return loc;
 	}
 

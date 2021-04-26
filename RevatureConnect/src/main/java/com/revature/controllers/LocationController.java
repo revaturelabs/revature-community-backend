@@ -30,8 +30,8 @@ public class LocationController {
 		
 	}
 	
-	@PostMapping("/locationspost")
-	public ResponseEntity<Location> getAllLocationsPost(@RequestBody Location location){
+	@PostMapping("/newlocation")
+	public ResponseEntity<Location> newLocation(@RequestBody Location location){
 		
 		Location test;
 		test = locServ.save(location);
