@@ -27,6 +27,9 @@ public class ResponseControllerPostTest {
 	@MockBean
 	ResponseService rserv;
 	
+	@MockBean
+	ResponseRepository rrepo;
+	
 	@Test
 	public void submitResponseTest() throws Exception {
 		Response r = new Response();
@@ -44,5 +47,5 @@ public class ResponseControllerPostTest {
 		  } catch (Exception e) {
 	            throw new RuntimeException(e);
 	        }
-	}
+	}	
 }

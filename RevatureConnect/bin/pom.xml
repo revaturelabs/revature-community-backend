@@ -52,6 +52,17 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+<<<<<<< HEAD
+=======
+		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.200</version>
+			<scope>run</scope>
+		</dependency>
+
+>>>>>>> 5e46d99b8dd58c45a168750f21f3f47e145d561e
 	</dependencies>
 
 	<build>
