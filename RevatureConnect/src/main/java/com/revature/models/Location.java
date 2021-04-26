@@ -14,13 +14,13 @@ public @Data class Location {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 	private String location;
 
 	public Location() {
 	}
 
-	public Location(int id, String location) {
+	public Location(Integer id, String location) {
 		this.id = id;
 		this.location = location;
 	}
