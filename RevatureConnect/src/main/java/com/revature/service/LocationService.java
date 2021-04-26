@@ -32,6 +32,11 @@ public class LocationService{
 
 	}
 	
+	/*public List<Post> findAllByCategory(String category) {
+		List<Post> posts = locRepo.findAllByCategory(category);
+		return posts;
+	}*/
+	
 	
 	
 }

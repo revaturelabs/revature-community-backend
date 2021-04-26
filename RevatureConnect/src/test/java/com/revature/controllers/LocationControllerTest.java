@@ -78,5 +78,11 @@ public class LocationControllerTest {
 		String locAsString = om.writeValueAsString(location);
 		return locAsString;
 	}
+	
+	/*@Test
+	void getAllByCategory(String category) throws Exception {
+		String cat = "Entertainment";
+		
+	}*/
 
 }

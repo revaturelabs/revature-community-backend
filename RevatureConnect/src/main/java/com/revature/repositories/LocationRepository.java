@@ -12,4 +12,6 @@ import com.revature.models.Location;
 @Repository
 public interface LocationRepository extends JpaRepository<Location, String>{
 	
+	@Query(value="select * from locations where category= :cat, nativeQuery=true")
+	List<Location> findAllByCategory(@Param("cat") String category);
 }
