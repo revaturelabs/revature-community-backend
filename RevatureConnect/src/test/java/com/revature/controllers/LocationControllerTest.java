@@ -46,6 +46,7 @@ public class LocationControllerTest {
 				contentType(org.springframework.http.MediaType.APPLICATION_JSON)).
 		andExpect(jsonPath("$", hasSize(1))).
 			andDo(print()); 
+	}
 
   @Test
 	void getAllLocations() throws Exception {
@@ -58,7 +59,6 @@ public class LocationControllerTest {
 				.contentType(org.springframework.http.MediaType.APPLICATION_JSON)).
 		andExpect(jsonPath("$", hasSize(2)))
 				.andDo(print());
-
 	}
 	
 	@Test
