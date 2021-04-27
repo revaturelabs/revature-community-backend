@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.Posts;
-import com.revature.repositories.PostsRepository;
 import com.revature.service.PostsService;
 
 @RestController
@@ -27,7 +26,7 @@ public class PostsController {
 
 		List<Posts> postList = postsService.getAllPost();
 
-		return new ResponseEntity<List<Posts>>(postList, HttpStatus.OK);
+		return new ResponseEntity<>(postList, HttpStatus.OK);
 
 	}
 	
