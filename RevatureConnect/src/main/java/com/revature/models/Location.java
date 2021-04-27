@@ -8,32 +8,25 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Locations")
+@NoArgsConstructor
 public @Data class Location {
 
-
 	@Id
-	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	
-	@Column(name="location")
+	private Integer id;
 	private String location;
-
-	public Location() {
-	}
-
-
-	public Location(Integer id, String location) {
-		this.id = id;
-		this.location = location;
-	}
 
 	public Location(String name) {
 		this.location = name;
 
 	}
 
+	public Location(Integer id, String location) {
+		this.id = id;
+		this.location = location;
+	}
 }
