@@ -30,6 +30,7 @@ public class LocationService {
 	public Location save(Location location) {
 		Location loc = locRepo.save(location);
 		return loc;
+
 	}
 	
 	/*public List<Post> findAllByCategory(String category) {
@@ -40,6 +41,7 @@ public class LocationService {
 
 	// use to remove a location from the db
 	public Map<String, Boolean> remove(String name) throws ResourceNotFoundException {
+		
 		Location locToDel = locRepo.findOne(Example.of(new Location(name)))
 				.orElseThrow(() -> new ResourceNotFoundException("Location not found"));
 	

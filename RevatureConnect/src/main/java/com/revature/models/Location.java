@@ -13,6 +13,7 @@ import lombok.Data;
 @Table(name = "Locations")
 public @Data class Location {
 
+
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,13 +25,15 @@ public @Data class Location {
 	public Location() {
 	}
 
-	public Location(int id, String location) {
+
+	public Location(Integer id, String location) {
 		this.id = id;
 		this.location = location;
 	}
 
 	public Location(String name) {
 		this.location = name;
+
 	}
 
 }
