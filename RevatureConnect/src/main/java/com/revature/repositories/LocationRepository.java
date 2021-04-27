@@ -15,3 +15,4 @@ public interface LocationRepository extends JpaRepository<Location, Integer>{
 	/*@Query(value="select * from locations where category= :cat, nativeQuery=true")
 	List<Location> findAllByCategory(@Param("cat") String category);*/
 }
+

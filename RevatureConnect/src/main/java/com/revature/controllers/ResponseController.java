@@ -1,4 +1,4 @@
-package com.revature.controller;
+package com.revature.controllers;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.model.Response;
+import com.revature.models.Response;
 import com.revature.service.ResponseService;
 
 @CrossOrigin("*")
@@ -25,8 +25,8 @@ public class ResponseController {
     @Autowired
     private ResponseService rservice; 
 
-    @GetMapping("/responses/{id}")
-    public ResponseEntity<List<Response>> getresponsesbypostid(@PathVariable("postId") Integer postId) { 
+    @GetMapping("/responses/{postId}")
+    public ResponseEntity<List<Response>> getresponsesbypostid(@PathVariable("postId") long postId) { 
         List<Response> rs = rservice.getResponsesByPostId(postId);
         return new ResponseEntity<List<Response>>(rs, HttpStatus.OK); 
     }
@@ -36,7 +36,7 @@ public class ResponseController {
 
         Response r = new Response(); 
 
-        r.setContent(response.getContent()); 
+        r.setContent(response.getContent());
         r.setPostId(response.getPostId());
         Response responseObject = rservice.submitResponse(response);
         return new ResponseEntity<Response>(responseObject, HttpStatus.OK);

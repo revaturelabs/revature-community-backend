@@ -61,7 +61,7 @@ public class LocationControllerTest {
 	@Test
 	void createLocation() throws Exception {
 		Location location = new Location(5, "Houston, Texas");
-		
+
 	}
 
 	/*@Test
