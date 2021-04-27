@@ -1,4 +1,4 @@
-package com.revature.controller.test;
+package com.revature.controllers;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

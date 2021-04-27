@@ -1,4 +1,4 @@
-package com.revature.controller.test;
+package com.revature.controllers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
