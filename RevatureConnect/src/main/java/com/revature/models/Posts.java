@@ -33,8 +33,8 @@ public class Posts {
 		private String content;
 		
 		@Column(name = "location_id")
-		@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	    @JoinColumn(name = "id", nullable = false)
+//		@ManyToOne(fetch = FetchType.EAGER, optional = false)
+//	    @JoinColumn(name = "id", nullable = false)
 		private String locationId; 
 		
 		@Enumerated(EnumType.STRING)
