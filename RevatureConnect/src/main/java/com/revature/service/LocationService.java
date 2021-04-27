@@ -28,10 +28,16 @@ public class LocationService {
 
 	// use to add a new location to the db
 	public Location save(Location location) {
-		Location loc = (Location) locRepo.save(location);
+		Location loc = locRepo.save(location);
 		return loc;
 
 	}
+	
+	/*public List<Post> findAllByCategory(String category) {
+		List<Post> posts = locRepo.findAllByCategory(category);
+		return posts;
+	}*/
+	
 
 	// use to remove a location from the db
 	public Map<String, Boolean> remove(String name) throws ResourceNotFoundException {
@@ -51,3 +57,4 @@ public class LocationService {
 	}
 
 }
+

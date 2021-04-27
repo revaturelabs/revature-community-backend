@@ -41,6 +41,7 @@ public class LocationControllerTest {
 //			andDo(print()); 
 //	}
 
+
 	@Test
 	void testGetAllLocations() throws Exception {
 		List<Location> locations = new ArrayList<>();
@@ -76,13 +77,12 @@ public class LocationControllerTest {
 
 		assertThat(responseEntity.getStatusCodeValue()).isEqualTo(201);
 		assertThat(responseEntity.getHeaders().getLocation().getPath()).isEqualTo("/1");
-
 	}
-//
-//	private String toJson(Location location) throws JsonProcessingException {
-//		ObjectMapper om = new ObjectMapper();
-//		String locAsString = om.writeValueAsString(location);
-//		return locAsString;
-//	}
+
+	/*@Test
+	void getAllByCategory(String category) throws Exception {
+		String cat = "Entertainment";
+		
+	}*/
 
 }
