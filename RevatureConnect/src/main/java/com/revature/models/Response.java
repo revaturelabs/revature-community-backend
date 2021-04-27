@@ -36,7 +36,7 @@ public class Response {
         this.id = id;
     }
 
-    @Column(name = "content")
+    @Column(name = "content", columnDefinition = "TEXT")
     public String getContent() {
         return content;
     }

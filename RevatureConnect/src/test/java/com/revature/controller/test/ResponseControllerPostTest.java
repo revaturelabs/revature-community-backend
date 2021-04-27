@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.controllers.ResponseController;
 import com.revature.models.Response;
+import com.revature.repositories.ResponseRepository;
 import com.revature.service.ResponseService;
 
 @RunWith(SpringRunner.class)
