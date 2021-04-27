@@ -10,13 +10,18 @@ import org.springframework.stereotype.Service;
 
 import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Location;
+import com.revature.models.Posts;
 import com.revature.repositories.LocationRepository;
+import com.revature.repositories.PostsRepository;
 
 @Service
 public class LocationService {
 
 	@Autowired
 	LocationRepository locRepo;
+	
+	@Autowired
+	PostsRepository postRepo;
 
 	// use to get all the locations from db
 	public List<Location> findAll() {
@@ -54,6 +59,12 @@ public class LocationService {
 
 	public Location findOne(int id) throws ResourceNotFoundException {
 		return locRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Location not found"));
+	}
+	
+	public List<Posts> getAllPostsByLocationId(Location location) {
+		Example<Posts> postsExample = Example.of(new Posts(location));
+		List<Posts> posts = postRepo.findAll(postsExample);
+		return posts;
 	}
 
 }

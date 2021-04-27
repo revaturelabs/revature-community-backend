@@ -22,6 +22,8 @@ import lombok.Setter;
 @Getter @Setter @NoArgsConstructor
 public class Posts {
 		
+
+
 		@Id
 		@Column(name = "post_id")
 		@GeneratedValue(strategy=GenerationType.AUTO)
@@ -37,13 +39,14 @@ public class Posts {
 		@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	    @JoinColumn(name = "id", nullable = false)
 		private Location location; 
-
 		
 		@Enumerated(EnumType.STRING)
 		@Column(name = "category_type")
 		private CategoryType categoryType; 
 
-		
+		public Posts(Location location) {
+			this.location = location;
+		}
 		
 		
 		
