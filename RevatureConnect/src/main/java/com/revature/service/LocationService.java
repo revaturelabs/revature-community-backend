@@ -35,15 +35,19 @@ public class LocationService {
 
 	// use to remove a location from the db
 	public Map<String, Boolean> remove(String name) throws ResourceNotFoundException {
-		
+
 		Location locToDel = locRepo.findOne(Example.of(new Location(name)))
 				.orElseThrow(() -> new ResourceNotFoundException("Location not found"));
-	
+
 		locRepo.delete(locToDel);
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
-				
+
 		return response;
+	}
+
+	public Location findOne(int id) throws ResourceNotFoundException {
+		return locRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Location not found"));
 	}
 
 }
