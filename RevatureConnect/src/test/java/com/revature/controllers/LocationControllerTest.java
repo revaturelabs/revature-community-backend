@@ -25,7 +25,6 @@ public class LocationControllerTest {
 	@Mock
 	private LocationService locationService;
 	
-
 //	@Test
 //	void deleteLocation() throws Exception { 
 //		List<Location> locations = new ArrayList<>(); 
@@ -37,7 +36,6 @@ public class LocationControllerTest {
 //		andExpect(jsonPath("$", hasSize(1))).
 //			andDo(print()); 
 //	}
-
 
     @Test
 	void testGetAllLocations() throws Exception {

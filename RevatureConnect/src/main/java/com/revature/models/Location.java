@@ -17,7 +17,6 @@ public @Data class Location {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-
 	private String location;
 
 	public Location(String name) {
