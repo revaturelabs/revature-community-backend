@@ -1,12 +1,14 @@
 package com.revature.controllers;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -35,6 +37,8 @@ class PostControllerTest {
 	Location loc = new Location(1,"mockLocation");
 	@MockBean
 	private PostRepository postRepository;
+	
+	@Enumerated(EnumType.STRING)
 	CategoryType ctype;
 	Posts mockpost = new Posts(1,"dtitle","dcontent",loc,CategoryType.Housing);
 	List<Posts> mockpostList = new ArrayList<Posts>();

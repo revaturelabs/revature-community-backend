@@ -1,4 +1,4 @@
-package com.revature.controller.test;
+package com.revature.controllers;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import org.springframework.test.context.junit4.SpringRunner;
 
+//import com.revature.controller.ResponseController;
 import com.revature.models.Response;
 import com.revature.repositories.ResponseRepository;
 
@@ -25,21 +26,22 @@ public class ResponseControllerIntegrationTest {
 	@Autowired
 	private ResponseRepository rrepo;
 
-	
+	// This test is in a different class because the method is a NatvieSQL method
 	@Test
 	public void whenFindByPostId_thenReturnResponses() {
-		//given
+		//given - sets Response object to persist in mock database
 		Response response = new Response("This is a test", 1);
 		entityManager.persist(response);
 		entityManager.flush();
 		
-		//when
-		List<Response> found = rrepo.getResponsesByPostId(response.getPostId());
+		//when - method to run
+		List<Response> found = rrepo.getResponsesByPostId(1);
 		
-		//then
+		//then - asserts that the method returns the correct Content
 		for (Response f : found) {
 		assertThat(f.getContent()).isEqualTo(response.getContent());
 		}
 	}
 	
+
 }
