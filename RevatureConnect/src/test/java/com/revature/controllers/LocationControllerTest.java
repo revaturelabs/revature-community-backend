@@ -1,55 +1,30 @@
 package com.revature.controllers;
 
-import static org.hamcrest.Matchers.hasSize;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Location;
 import com.revature.service.LocationService;
 
-@ExtendWith(SpringExtension.class)
-@WebMvcTest(LocationController.class)
+@ExtendWith(MockitoExtension.class)
+//@WebMvcTest(LocationController.class)
 public class LocationControllerTest {
 
-	@Autowired
-	MockMvc mockMvc;
+	@InjectMocks
+	LocationController locationController;
 
-	@MockBean
+	@Mock
 	private LocationService locationService;
 	
-<<<<<<< HEAD
-	@Test
-	void deleteLocation() throws Exception { 
-		List<Location> locations = new ArrayList<>(); 
-		locations.add(new Location(1, "Sydney, Australia"));
-		locations.add(new Location(2, "LizardLick, Texas")); 
-		//locations.remove(1); 
-		when(locationService.remove("Sydney, Australia")).thenReturn(locations);
-		mockMvc.perform(MockMvcRequestBuilders.delete("/remove/SydneyAustralia").
-				contentType(org.springframework.http.MediaType.APPLICATION_JSON)).
-		andExpect(jsonPath("$", hasSize(0))).
-			andDo(print()); 
-	}
-	
-=======
 //	@Test
 //	void deleteLocation() throws Exception { 
 //		List<Location> locations = new ArrayList<>(); 
@@ -62,35 +37,37 @@ public class LocationControllerTest {
 //			andDo(print()); 
 //	}
 
->>>>>>> 4d701f44cc1c8d5a40a240ed859f70d3a91b8586
     @Test
-	void getAllLocations() throws Exception {
+	void testGetAllLocations() throws Exception {
 		List<Location> locations = new ArrayList<>();
-		locations.add(new Location(5, "Houston, Texas"));
-		locations.add(new Location(5, "Jackson, New Jersey"));
+		Location location1 = new Location(1, "Houston, Texas");
+		Location location2 = new Location(2, "Jackson, New Jersey");
+		
+		locations.add(location1);
+		locations.add(location2);
+		
 		when(locationService.findAll()).thenReturn(locations);
 
-		mockMvc.perform(MockMvcRequestBuilders.get("/locations")
-				.contentType(org.springframework.http.MediaType.APPLICATION_JSON)).
-		andExpect(jsonPath("$", hasSize(2)))
-				.andDo(print());
+		//when
+		List<Location> resultLocations = locationController.getAllLocations();
+		
+		//then
+		assertThat(resultLocations.size()).isEqualTo(2);
+		
+		assertThat(resultLocations.get(0)).isEqualTo(location1);
+		assertThat(resultLocations.get(1)).isEqualTo(location2);
 	}
 	
 	@Test
 	void createLocation() throws Exception {
 		Location location = new Location(5, "Houston, Texas");
-		when(locationService.save(Mockito.any(Location.class))).thenReturn(location);
-
-		mockMvc.perform(MockMvcRequestBuilders.post("/locationspost")
-				.contentType(org.springframework.http.MediaType.APPLICATION_JSON).content(toJson(location)))
-				.andExpect(status().isOk()).andExpect(content().contentType("application/json")).andDo(print());
 		
 	}
-
-	private String toJson(Location location) throws JsonProcessingException {
-		ObjectMapper om = new ObjectMapper();
-		String locAsString = om.writeValueAsString(location);
-		return locAsString;
-	}
+//
+//	private String toJson(Location location) throws JsonProcessingException {
+//		ObjectMapper om = new ObjectMapper();
+//		String locAsString = om.writeValueAsString(location);
+//		return locAsString;
+//	}
 
 }

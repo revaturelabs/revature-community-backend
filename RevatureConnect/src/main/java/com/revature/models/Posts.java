@@ -2,9 +2,15 @@ package com.revature.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -28,10 +34,15 @@ public class Posts {
 		private String content;
 		
 		@Column(name = "location_id")
+
+		@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	    @JoinColumn(name = "id", nullable = false)
 		private String locationId; 
 		
-		@Column(name = "category_id")
-		private String categoryId; 
+		@Enumerated(EnumType.STRING)
+		@Column(name = "category_type")
+		private CategoryType categoryType; 
+
 		
 		
 		
