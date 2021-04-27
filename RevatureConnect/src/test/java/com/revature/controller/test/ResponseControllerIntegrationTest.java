@@ -12,9 +12,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import org.springframework.test.context.junit4.SpringRunner;
 
-//import com.revature.controller.ResponseController;
-import com.revature.model.Response;
-import com.revature.repository.ResponseRepository;
+import com.revature.models.Response;
+import com.revature.repositories.ResponseRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

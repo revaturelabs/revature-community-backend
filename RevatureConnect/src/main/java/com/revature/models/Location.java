@@ -1,6 +1,9 @@
 package com.revature.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -9,15 +12,25 @@ import lombok.Data;
 @Table(name = "Locations")
 public @Data class Location {
 
-	private int id;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+
 	private String location;
 
 	public Location() {
 	}
 
-	public Location(int id, String location) {
+
+	public Location(Integer id, String location) {
 		this.id = id;
 		this.location = location;
+	}
+
+	public Location(String name) {
+		this.location = name;
+
 	}
 
 }
