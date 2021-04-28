@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ColumnTransformer;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -41,13 +39,17 @@ public @Data class User {
 
 	}
 	
+
 	public User(String email, String password) {
 		this.email=email;
 		this.password=password;
 	}
-	public User(String email, String username, String password) {
+
+	public User(Integer id, String email, String username, String password) {
+		this.id = id;
 		this.email = email;
 		this.username = username;
 		this.password = password;
 	}
+
 }

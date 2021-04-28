@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -77,29 +78,5 @@ public class LocationControllerTest {
 		assertThat(responseEntity.getStatusCodeValue()).isEqualTo(201);
 		assertThat(responseEntity.getHeaders().getLocation().getPath()).isEqualTo("/1");
 
-		Location location = new Location("Houston, Texas");
-
 	}
-
-	/*
-	 * @Test void getAllPostsByLocationId() throws Exception { List<Posts> posts =
-	 * new ArrayList<>(); posts.add(new Posts(1, "Hello", "Content message",
-	 * "Reston,Virginia", CategoryType.Housing)); posts.add(new Posts(2, "Hello2",
-	 * "Content message2", "Reston,Virginia", CategoryType.Housing)); posts.add(new
-	 * Posts(3, "Hello2", "Content message2", "Detroit,Michigan",
-	 * CategoryType.Housing)); when(postRepo.findAll()).thenReturn(posts);
-	 * 
-	 * mockMvc.perform(MockMvcRequestBuilders.get("/locations/Reston,Virgina")
-	 * .contentType(org.springframework.http.MediaType.APPLICATION_JSON)).
-	 * andExpect(jsonPath("$", hasSize(3))) .andDo(print()); >>>>>>>
-	 * d46dc2b69031e741d82382c6fbd462d00baa6969 }
-	 */
-
-	/*
-	 * @Test void getAllByCategory(String category) throws Exception { String cat =
-	 * "Entertainment";
-	 * 
-	 * }
-	 */
-
 }

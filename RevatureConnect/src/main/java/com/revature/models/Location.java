@@ -32,4 +32,5 @@ public @Data class Location {
 	public Location(String locationName) {
 		this.locationName = locationName;
 	}
+
 }
