@@ -55,14 +55,5 @@ public class LocationService {
 	public Location findOne(int id) throws ResourceNotFoundException {
 		return locRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Location not found"));
 	}
-	
-	public List<Posts> getAllPostsByLocationId(int locationId) {
-		return locRepo.getAllPostsByLocationId(locationId);
-	}
-	
-	public List<Posts> getAllByCategoryId(int categoryId) {
-		return locRepo.getAllPostsByCategoryId(categoryId);
-	}
-
 }
 

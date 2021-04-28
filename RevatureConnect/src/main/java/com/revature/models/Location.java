@@ -7,9 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "locations")
-public class Location {
+public @Data class Location {
 
 	@Id
 	@Column(name = "location_id")
@@ -30,27 +32,4 @@ public class Location {
 	public Location(String locationName) {
 		this.locationName = locationName;
 	}
-
-	public int getLocationId() {
-		return locationId;
-	}
-
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
-	}
-
-	public String getLocationName() {
-		return locationName;
-	}
-
-	public void setLocationName(String locationName) {
-		this.locationName = locationName;
-	}
-<<<<<<< HEAD
-
-
-=======
-	
-	
->>>>>>> d46dc2b69031e741d82382c6fbd462d00baa6969
 }
