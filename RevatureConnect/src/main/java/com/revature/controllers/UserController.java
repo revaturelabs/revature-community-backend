@@ -45,7 +45,23 @@ public class UserController {
 	@GetMapping("/login/{id}")
 	public User userLogin(@PathVariable(value = "id") Integer id) {
 		return userServ.getUser(id);
+	}
+	
+	@GetMapping("/userLogin/{id}")
+	public Boolean usrlg(@PathVariable(value = "id") Integer id) {
+		User user = userServ.getUser(id);
+		String username = user.getUsername();
+		String password = user.getPassword();
 		
+		String inputUsername = "";
+		String inputPassword = "";
+		
+		if(username == inputUsername && password == inputPassword) {
+			System.out.println("Login was succesful");
+			return true;
+		}
+		System.out.println("Unable to login");
+		return false;
 	}
 	
 	@PostMapping("/verification")

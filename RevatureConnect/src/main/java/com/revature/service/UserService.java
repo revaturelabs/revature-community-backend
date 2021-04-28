@@ -33,5 +33,4 @@ public class UserService{
 		System.out.println(user.getUserId());
 		return user;
 	}
-	
 }
