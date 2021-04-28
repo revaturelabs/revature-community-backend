@@ -44,8 +44,10 @@ public class LocationController {
 	@PostMapping(path = "/add/{name}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Object> createNewLocation(@PathVariable(value = "name") String nameLoc) {
 		Location locToSave = new Location(nameLoc);
+	
 		Location locSaved = locServ.save(locToSave);
 
+		//creating path to the location that was saved
 		URI locationURI = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}")
 				.buildAndExpand(locSaved.getId())
