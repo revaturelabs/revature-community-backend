@@ -37,7 +37,7 @@ public class Posts {
 		
 
 		@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	    @JoinColumn(name = "id", nullable = false)
+	    @JoinColumn(name = "location_id", nullable = false)
 		private Location location; 
 		
 		@Enumerated(EnumType.STRING)

@@ -44,7 +44,7 @@ public class LocationController {
 
 		URI locationURI = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}")
-				.buildAndExpand(locSaved.getId())
+				.buildAndExpand(locSaved.getLocationId())
 				.toUri();
 		
 		//sending the path to the location in the response rather than the location obj itself
