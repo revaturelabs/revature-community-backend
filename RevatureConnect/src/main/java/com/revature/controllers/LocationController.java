@@ -41,10 +41,10 @@ public class LocationController {
 	}
 
 
-	@PostMapping(path = "/add/{name}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Object> createNewLocation(@PathVariable(value = "name") String nameLoc) {
-		Location locToSave = new Location(nameLoc);
-	
+@PostMapping(path = "/add/{city}/{state}")
+	public ResponseEntity<Object> createNewLocation(@PathVariable(value = "city") String city, @PathVariable(value = "state") String state) {
+		
+		Location locToSave = new Location(city, state);
 		Location locSaved = locServ.save(locToSave);
 
 		//creating path to the location that was saved
@@ -59,9 +59,11 @@ public class LocationController {
 		return ResponseEntity.created(locationURI).build();
 	}
 
-	@DeleteMapping("/remove/{name}")
-	public Map<String, Boolean> removeLocation(@PathVariable("name") String name) throws ResourceNotFoundException {
-		return locServ.remove(name);
+	@DeleteMapping("/remove/{city}/{state}")
+	public Map<String, Boolean> removeLocation(
+			@PathVariable("city") String city, @PathVariable("state") String state) 
+					throws ResourceNotFoundException {
+		return locServ.remove(city, state);
 
 	}
 
