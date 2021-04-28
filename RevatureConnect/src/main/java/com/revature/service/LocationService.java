@@ -38,11 +38,6 @@ public class LocationService {
 
 	}
 	
-	/*public List<Post> findAllByCategory(String category) {
-		List<Post> posts = locRepo.findAllByCategory(category);
-		return posts;
-	}*/
-	
 
 	// use to remove a location from the db
 	public Map<String, Boolean> remove(String name) throws ResourceNotFoundException {
@@ -61,10 +56,12 @@ public class LocationService {
 		return locRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Location not found"));
 	}
 	
-	public List<Posts> getAllPostsByLocationId(Location location) {
-		Example<Posts> postsExample = Example.of(new Posts(location));
-		List<Posts> posts = postRepo.findAll(postsExample);
-		return posts;
+	public List<Posts> getAllPostsByLocationId(int locationId) {
+		return locRepo.getAllPostsByLocationId(locationId);
+	}
+	
+	public List<Posts> getAllByCategoryId(int categoryId) {
+		return locRepo.getAllPostsByCategoryId(categoryId);
 	}
 
 }
