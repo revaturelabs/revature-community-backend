@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -41,14 +40,14 @@ public class LocationController {
 	}
 
 
-	@PostMapping(path = "/add/{name}", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = "/add/{name}", produces = "application/json")
 	public ResponseEntity<Object> createNewLocation(@PathVariable(value = "name") String nameLoc) {
 		Location locToSave = new Location(nameLoc);
 	
 		Location locSaved = locServ.save(locToSave);
 
 		//creating path to the location that was saved
-		URI locationURI = ServletUriComponentsBuilder.fromCurrentRequest()
+		URI locationURI = ServletUriComponentsBuilder.fromPath("")
 				.path("/{id}")
 				.buildAndExpand(locSaved.getId())
 				.toUri();
@@ -57,8 +56,10 @@ public class LocationController {
 		//if you need to access the location after creating it, you can make a quick get request using this URI
 		//If it turns out we are always immediately using the location object in the front end we can change this method
 		return ResponseEntity.created(locationURI).build();
+		
 	}
 
+	//might not need
 	@DeleteMapping("/remove/{name}")
 	public Map<String, Boolean> removeLocation(@PathVariable("name") String name) throws ResourceNotFoundException {
 		return locServ.remove(name);

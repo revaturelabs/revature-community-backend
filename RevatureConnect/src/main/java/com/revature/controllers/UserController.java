@@ -23,7 +23,7 @@ import com.revature.service.UserService;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/users")
-public class UserController {
+public class UserController {	
 
 	@Autowired
 	UserService userServ;
@@ -41,11 +41,10 @@ public class UserController {
 	}
 
 
-	@PostMapping(path = "/add/{name}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Object> createNewUser(@PathVariable(value = "name") String emailUser) {
-		User userToSave = new User(emailUser);
+	@PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<Object> createNewUser(@RequestBody User userToAdd) {
 	
-		User userSaved = userServ.save(userToSave);
+		User userSaved = userServ.save(userToAdd);
 
 		//creating path to the user that was saved
 		URI userURI = ServletUriComponentsBuilder.fromCurrentRequest()
