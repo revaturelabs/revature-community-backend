@@ -48,15 +48,10 @@ public class LocationControllerTest {
 	@Test
 	void testGetAllLocations() throws Exception {
 		List<Location> locations = new ArrayList<>();
-<<<<<<< HEAD
-		Location location1 = new Location(1, "Houston, Texas");
-		Location location2 = new Location(2, "Jackson, New Jersey");
 
-=======
-		Location location1 = new Location(2,  "Houston", "Texas");
-		Location location2 = new Location(3, "Jackson", "New Jersey");
-		
->>>>>>> 8dbcf8e57009cd17a26b3eabb93769e6a08e1730
+		Location location1 = new Location("Houston", "Texas");
+		Location location2 = new Location("Jackson", "New Jersey");
+
 		locations.add(location1);
 		locations.add(location2);
 
@@ -74,20 +69,19 @@ public class LocationControllerTest {
 
 	@Test
 	void createLocation() throws Exception {
-<<<<<<< HEAD
-=======
+
 		Location location = new Location(5, "Houston", "Texas");
->>>>>>> 8dbcf8e57009cd17a26b3eabb93769e6a08e1730
+
 
 
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-		Location locationToReturn = new Location(1, "Virginia");
-		Location locationToSave = new Location("Virginia");
+		Location locationToReturn = new Location("Richmond", "Virginia");
+		Location locationToSave = new Location("Richmond", "Virginia");
 	
 		when(locationService.save(locationToSave)).thenReturn(locationToReturn);
 
-		ResponseEntity<Object> responseEntity = locationController.createNewLocation("Virginia");
+		ResponseEntity<Object> responseEntity = locationController.createNewLocation("Richmond", "Virginia");
 
 		assertThat(responseEntity.getStatusCodeValue()).isEqualTo(201);
 		assertThat(responseEntity.getHeaders().getLocation().getPath()).isEqualTo("/1");

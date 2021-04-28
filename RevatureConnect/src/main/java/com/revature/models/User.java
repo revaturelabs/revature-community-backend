@@ -23,15 +23,6 @@ public @Data class User {
 	private String username;
 	private String password;
 	
-<<<<<<< HEAD
-//	public User() {
-//		
-//	}
-//	
-	public User(Integer userId, String username, String password) {
-		super();
-		this.userId = userId;
-=======
 	public User(String email) {
 		this.email = email;
 
@@ -40,7 +31,6 @@ public @Data class User {
 	public User(Integer id, String email, String username, String password) {
 		this.id = id;
 		this.email = email;
->>>>>>> 3d0d8017a8bc115fc215cbfeff1e169d61211735
 		this.username = username;
 		this.password = password;
 	}
