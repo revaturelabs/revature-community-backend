@@ -39,17 +39,20 @@ public class LocationController {
 	@PostMapping(path = "/add/{name}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Object> createNewLocation(@PathVariable(value = "name") String nameLoc) {
 		Location locToSave = new Location(nameLoc);
+	
 		Location locSaved = locServ.save(locToSave);
 
-		URI locationURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(locSaved.getLocationId()).toUri();
 
-		// sending the path to the location in the response rather than the location obj
-		// itself
-		// if you need to access the location after creating it, you can make a quick
-		// get request using this URI
-		// If it turns out we are always immediately using the location object in the
-		// front end we can change this method
+		//creating path to the location that was saved
+		URI locationURI = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(locSaved.getId())
+				.toUri();
+		
+		//sending the path to the location in the response rather than the location obj itself
+		//if you need to access the location after creating it, you can make a quick get request using this URI
+		//If it turns out we are always immediately using the location object in the front end we can change this method
+
 		return ResponseEntity.created(locationURI).build();
 	}
 

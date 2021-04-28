@@ -46,6 +46,5 @@ public class Location {
 	public void setLocationName(String locationName) {
 		this.locationName = locationName;
 	}
-	
-	
+
 }
