@@ -40,6 +40,7 @@ public class ResponseController {
 
         r.setContent(response.getContent());
         r.setPostId(response.getPostId());
+        r.setUserId(response.getUserId());
         Response responseObject = rservice.submitResponse(response);
         return new ResponseEntity<Response>(responseObject, HttpStatus.OK);
     }
@@ -61,4 +62,5 @@ public class ResponseController {
     	Response response = rservice.getResponseById(id);
     	return new ResponseEntity<Response> (response, HttpStatus.OK);
     }
+    
 }
