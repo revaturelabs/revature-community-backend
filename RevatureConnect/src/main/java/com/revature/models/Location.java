@@ -1,6 +1,5 @@
 package com.revature.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,23 +13,22 @@ import lombok.Data;
 public @Data class Location {
 
 	@Id
-	@Column(name = "location_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int locationId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	
-	@Column(name = "location_name")
-	private String locationName;
+	private String city;
 	
-	public Location() {
+	private String state; 
+
+	public Location(String city, String state) {
+		this.city = city;
+		this.state = state; 
 	}
 
-	public Location(int locationId, String locationName) {
-		this.locationName = locationName;
-		this.locationId = locationId;
-	}
-	
-	public Location(String locationName) {
-		this.locationName = locationName;
+	public Location(Integer id, String city, String state) { 
+		this.id = id; 
+		this.city = city; 
+		this.state = state; 
 	}
 
 }
