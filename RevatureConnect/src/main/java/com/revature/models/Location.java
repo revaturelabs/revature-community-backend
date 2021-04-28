@@ -29,4 +29,5 @@ public @Data class Location {
 		this.id = id;
 		this.location = location;
 	}
+
 }
