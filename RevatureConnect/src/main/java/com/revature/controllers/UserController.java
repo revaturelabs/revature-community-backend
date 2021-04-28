@@ -49,7 +49,7 @@ public class UserController {
 		//creating path to the user that was saved
 		URI userURI = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}")
-				.buildAndExpand(userSaved.getId())
+				.buildAndExpand(userSaved.getId()) 	
 				.toUri();
 		
 		//sending the path to the user in the response rather than the user obj itself

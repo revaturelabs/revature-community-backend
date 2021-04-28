@@ -24,4 +24,17 @@ public class ResponseService {
         return response; 
     }
 
+    public Response updateResponse(Response response) { 
+        Response updatedr = rrepo.findById(response.getId()).get();
+        updatedr.setContent(response.getContent());
+        return rrepo.save(updatedr);
+    }
+    public void deleteResponse(long id) {
+        Response deleted = rrepo.findById(id).get();
+        rrepo.delete(deleted);
+    }
+    
+    public Response getResponseById(long id) {
+    	return rrepo.findById(id).get();
+    }
 }

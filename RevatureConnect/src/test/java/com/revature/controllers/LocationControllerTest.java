@@ -11,12 +11,17 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+<<<<<<< HEAD
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+=======
+import org.springframework.boot.test.mock.mockito.MockBean;
+>>>>>>> d46dc2b69031e741d82382c6fbd462d00baa6969
 
 import com.revature.models.Location;
+import com.revature.repositories.PostsRepository;
 import com.revature.service.LocationService;
 
 @ExtendWith(MockitoExtension.class)
@@ -28,7 +33,14 @@ public class LocationControllerTest {
 
 	@Mock
 	private LocationService locationService;
+<<<<<<< HEAD
 
+=======
+	
+	@MockBean
+	private PostsRepository postRepo;
+	
+>>>>>>> d46dc2b69031e741d82382c6fbd462d00baa6969
 //	@Test
 //	void deleteLocation() throws Exception { 
 //		List<Location> locations = new ArrayList<>(); 
@@ -65,6 +77,7 @@ public class LocationControllerTest {
 
 	@Test
 	void createLocation() throws Exception {
+<<<<<<< HEAD
 
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
@@ -77,7 +90,27 @@ public class LocationControllerTest {
 
 		assertThat(responseEntity.getStatusCodeValue()).isEqualTo(201);
 		assertThat(responseEntity.getHeaders().getLocation().getPath()).isEqualTo("/1");
+=======
+		Location location = new Location("Houston, Texas");
+
 	}
+	
+	/*
+	 *@Test
+	void getAllPostsByLocationId() throws Exception {
+		List<Posts> posts = new ArrayList<>();
+		posts.add(new Posts(1, "Hello", "Content message", "Reston,Virginia", CategoryType.Housing));
+		posts.add(new Posts(2, "Hello2", "Content message2", "Reston,Virginia", CategoryType.Housing));
+		posts.add(new Posts(3, "Hello2", "Content message2", "Detroit,Michigan", CategoryType.Housing));
+		when(postRepo.findAll()).thenReturn(posts);
+
+		mockMvc.perform(MockMvcRequestBuilders.get("/locations/Reston,Virgina")
+				.contentType(org.springframework.http.MediaType.APPLICATION_JSON)).
+		andExpect(jsonPath("$", hasSize(3)))
+				.andDo(print());
+>>>>>>> d46dc2b69031e741d82382c6fbd462d00baa6969
+	}
+	 */
 
 	/*@Test
 	void getAllByCategory(String category) throws Exception {
