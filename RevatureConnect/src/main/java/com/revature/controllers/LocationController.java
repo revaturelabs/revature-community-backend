@@ -36,26 +36,31 @@ public class LocationController {
 
 	}
 
-	@PostMapping(path = "/add/{name}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Object> createNewLocation(@PathVariable(value = "name") String nameLoc) {
-		Location locToSave = new Location(nameLoc);
+@PostMapping(path = "/add/{city}/{state}")
+	public ResponseEntity<Object> createNewLocation(@PathVariable(value = "city") String city, @PathVariable(value = "state") String state) {
+		
+		Location locToSave = new Location(city, state);
 		Location locSaved = locServ.save(locToSave);
 
-		URI locationURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(locSaved.getLocationId()).toUri();
 
-		// sending the path to the location in the response rather than the location obj
-		// itself
-		// if you need to access the location after creating it, you can make a quick
-		// get request using this URI
-		// If it turns out we are always immediately using the location object in the
-		// front end we can change this method
+		//creating path to the location that was saved
+		URI locationURI = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(locSaved.getId())
+				.toUri();
+		
+		//sending the path to the location in the response rather than the location obj itself
+		//if you need to access the location after creating it, you can make a quick get request using this URI
+		//If it turns out we are always immediately using the location object in the front end we can change this method
+
 		return ResponseEntity.created(locationURI).build();
 	}
 
-	@DeleteMapping("/remove/{name}")
-	public Map<String, Boolean> removeLocation(@PathVariable("name") String name) throws ResourceNotFoundException {
-		return locServ.remove(name);
+	@DeleteMapping("/remove/{city}/{state}")
+	public Map<String, Boolean> removeLocation(
+			@PathVariable("city") String city, @PathVariable("state") String state) 
+					throws ResourceNotFoundException {
+		return locServ.remove(city, state);
 
 	}
 
