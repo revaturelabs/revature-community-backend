@@ -18,16 +18,20 @@ public @Data class Location {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private String location;
+	
+	private String city;
+	
+	private String state; 
 
-	public Location(String name) {
-		this.location = name;
-
+	public Location(String city, String state) {
+		this.city = city;
+		this.state = state; 
 	}
-
-	public Location(Integer id, String location) {
-		this.id = id;
-		this.location = location;
+	
+	public Location(Integer id, String city, String state) { 
+		this.id = id; 
+		this.city = city; 
+		this.state = state; 
 	}
 
 }
