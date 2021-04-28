@@ -11,12 +11,15 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+
 import com.revature.models.Location;
+import com.revature.repositories.PostsRepository;
 import com.revature.service.LocationService;
 
 @ExtendWith(MockitoExtension.class)
@@ -76,6 +79,7 @@ public class LocationControllerTest {
 		Location location = new Location(5, "Houston", "Texas");
 >>>>>>> 8dbcf8e57009cd17a26b3eabb93769e6a08e1730
 
+
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
 		Location locationToReturn = new Location(1, "Virginia");
@@ -87,12 +91,8 @@ public class LocationControllerTest {
 
 		assertThat(responseEntity.getStatusCodeValue()).isEqualTo(201);
 		assertThat(responseEntity.getHeaders().getLocation().getPath()).isEqualTo("/1");
-	}
 
-	/*@Test
-	void getAllByCategory(String category) throws Exception {
-		String cat = "Entertainment";
-		
-	}*/
+	}
+	 
 
 }
