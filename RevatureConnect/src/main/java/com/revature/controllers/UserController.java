@@ -1,8 +1,10 @@
 package com.revature.controllers;
 
+
 import java.net.URI;
 import java.util.List;
 import java.util.Map;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -66,4 +68,53 @@ public class UserController {
 	}
 
 }
+
+// =======
+
+// See Jameson if you need this
+
+// import com.revature.exceptions.UserNotFoundException;
+// import com.revature.models.User;
+// import com.revature.repositories.UserRepository;
+// import com.revature.service.UserService;
+
+// @RestController
+// @CrossOrigin(origins = "http://localhost:4200")
+// @RequestMapping("/user")
+// public class UserController {
+
+// 	@Autowired
+// 	UserRepository userRepo;
+	
+// 	@Autowired
+// 	UserService userServ;
+
+	
+// 	@PostMapping("/addUser")
+// 	public ResponseEntity<User> addPost(@RequestBody User user){
+		
+// 		User newUser = userRepo.save(user);
+		
+// 		return ResponseEntity.ok().body(newUser);
+// 	}
+	
+// 	@GetMapping("/allUsers")
+// 	public List<User> getAllUsers(){
+// 		return userServ.getAllUsers();
+// 	}
+	
+// 	@GetMapping("/login/{id}")
+// 	public User userLogin(@PathVariable(value = "id") Integer id) {
+// 		return userServ.getUser(id);
+		
+// 	}
+	
+// 	@PostMapping("/verification")
+// 	public User login(@RequestBody User loginUser) throws UserNotFoundException {
+// 		User user = userServ.verification(loginUser);
+// 		return user;
+// 	}
+	
+	
+// }
 
