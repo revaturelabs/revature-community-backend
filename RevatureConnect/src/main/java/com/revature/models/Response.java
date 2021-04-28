@@ -7,57 +7,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "response")
-public class Response {
+@NoArgsConstructor
+public @Data class Response {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+    
+    @Column(name = "content", columnDefinition = "TEXT")
 	private String content;
+    
+    @Column(name = "postId")
 	private long postId;
 	
-	public Response() {
-		
-	}
 	
 	public Response(String content, long postId) {
 		this.content = content;
 		this.postId = postId;
 	}
-	
-	
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-   public long getId() {
-    	return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    @Column(name = "content", columnDefinition = "TEXT")
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    @Column(name = "postId")
-    public long getPostId() {
-        return postId;
-    }
-
-    public void setPostId(long postId) {
-        this.postId = postId;
-    }
-
-	@Override
-	public String toString() {
-		return "Response [id=" + id + ", content=" + content + ", postId=" + postId + "]";
-	}
-
     
 }
