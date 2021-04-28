@@ -48,6 +48,7 @@ public class ResponseController {
     @PutMapping("/responses/update")
     public ResponseEntity<Response> put(@RequestBody Response response) {
         Response updated = rservice.updateResponse(response);
+        System.out.println("test" + response);
         return new ResponseEntity<Response>(updated, HttpStatus.OK);
     }
     

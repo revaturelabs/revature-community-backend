@@ -1,21 +1,31 @@
 package com.revature.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
-
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "locations")
-@Getter @Setter @NoArgsConstructor
-public @Data class Location {
+public class Location {
 
-	private String location;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    
+    private String city;
+    
+    private String state; 
 
-	public Location(String location) {
-		this.location = location;
-	}
+    public Location(String city, String state) {
+        this.city = city;
+        this.state = state; 
+    }
+    
+    public Location(Integer id, String city, String state) { 
+        this.id = id; 
+        this.city = city; 
+        this.state = state; 
+    }
 }
