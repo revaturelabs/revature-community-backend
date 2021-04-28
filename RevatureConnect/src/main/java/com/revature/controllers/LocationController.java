@@ -36,20 +36,20 @@ public class LocationController {
 
 	}
 
-
 	@PostMapping(path = "/add/{name}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Object> createNewLocation(@PathVariable(value = "name") String nameLoc) {
 		Location locToSave = new Location(nameLoc);
 		Location locSaved = locServ.save(locToSave);
 
-		URI locationURI = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}")
-				.buildAndExpand(locSaved.getId())
-				.toUri();
-		
-		//sending the path to the location in the response rather than the location obj itself
-		//if you need to access the location after creating it, you can make a quick get request using this URI
-		//If it turns out we are always immediately using the location object in the front end we can change this method
+		URI locationURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(locSaved.getLocationId()).toUri();
+
+		// sending the path to the location in the response rather than the location obj
+		// itself
+		// if you need to access the location after creating it, you can make a quick
+		// get request using this URI
+		// If it turns out we are always immediately using the location object in the
+		// front end we can change this method
 		return ResponseEntity.created(locationURI).build();
 	}
 
@@ -58,11 +58,17 @@ public class LocationController {
 		return locServ.remove(name);
 
 	}
-	
-	@GetMapping("/locations/{location}")
-	public ResponseEntity<List<Posts>> getPostsByLocationId(@PathVariable("location")  Location location) {
-		return new ResponseEntity<>(locServ.getAllPostsByLocationId(location), HttpStatus.OK);
+
+	@GetMapping("/locations/{location_id}")
+	public ResponseEntity<List<Posts>> getPostsByLocationId(@PathVariable("location_id") int locationId) {
+		List<Posts> postsByLocationId = locServ.getAllPostsByLocationId(locationId);
+		return new ResponseEntity<List<Posts>>(postsByLocationId, HttpStatus.OK);
+	}
+
+	@GetMapping("/locations/{categoryId}")
+	public ResponseEntity<List<Posts>> getPostsByCategoryId(@PathVariable("categoryId") int categoryId) {
+		List<Posts> postsByCategoryId = locServ.getAllByCategoryId(categoryId);
+		return new ResponseEntity<List<Posts>>(postsByCategoryId, HttpStatus.OK);
 	}
 
 }
-
