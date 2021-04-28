@@ -45,8 +45,8 @@ public class LocationControllerTest {
     @Test
 	void testGetAllLocations() throws Exception {
 		List<Location> locations = new ArrayList<>();
-		Location location1 = new Location("Houston, Texas");
-		Location location2 = new Location("Jackson, New Jersey");
+		Location location1 = new Location(1, "Houston, Texas");
+		Location location2 = new Location(2, "Jackson, New Jersey");
 		
 		locations.add(location1);
 		locations.add(location2);
