@@ -11,8 +11,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.revature.models.Location;
+import com.revature.repositories.PostsRepository;
 import com.revature.service.LocationService;
 
 @ExtendWith(MockitoExtension.class)
@@ -24,6 +26,9 @@ public class LocationControllerTest {
 
 	@Mock
 	private LocationService locationService;
+	
+	@MockBean
+	private PostsRepository postRepo;
 	
 //	@Test
 //	void deleteLocation() throws Exception { 
@@ -40,8 +45,8 @@ public class LocationControllerTest {
     @Test
 	void testGetAllLocations() throws Exception {
 		List<Location> locations = new ArrayList<>();
-		Location location1 = new Location(1, "Houston, Texas");
-		Location location2 = new Location(2, "Jackson, New Jersey");
+		Location location1 = new Location("Houston, Texas");
+		Location location2 = new Location("Jackson, New Jersey");
 		
 		locations.add(location1);
 		locations.add(location2);
@@ -60,9 +65,25 @@ public class LocationControllerTest {
 	
 	@Test
 	void createLocation() throws Exception {
-		Location location = new Location(5, "Houston, Texas");
+		Location location = new Location("Houston, Texas");
 
 	}
+	
+	/*
+	 *@Test
+	void getAllPostsByLocationId() throws Exception {
+		List<Posts> posts = new ArrayList<>();
+		posts.add(new Posts(1, "Hello", "Content message", "Reston,Virginia", CategoryType.Housing));
+		posts.add(new Posts(2, "Hello2", "Content message2", "Reston,Virginia", CategoryType.Housing));
+		posts.add(new Posts(3, "Hello2", "Content message2", "Detroit,Michigan", CategoryType.Housing));
+		when(postRepo.findAll()).thenReturn(posts);
+
+		mockMvc.perform(MockMvcRequestBuilders.get("/locations/Reston,Virgina")
+				.contentType(org.springframework.http.MediaType.APPLICATION_JSON)).
+		andExpect(jsonPath("$", hasSize(3)))
+				.andDo(print());
+	}
+	 */
 
 	/*@Test
 	void getAllByCategory(String category) throws Exception {

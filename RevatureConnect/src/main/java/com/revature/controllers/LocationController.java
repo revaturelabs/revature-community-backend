@@ -5,19 +5,20 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Location;
+import com.revature.models.Posts;
 import com.revature.service.LocationService;
 
 @RestController
@@ -33,11 +34,6 @@ public class LocationController {
 
 		return locServ.findAll();
 
-	}
-	
-	@GetMapping(path="/{id}",produces="application/json")
-	public Location getLocationById(@PathVariable(value="id")int id) throws ResourceNotFoundException {
-		return locServ.findOne(id);
 	}
 
 
@@ -61,6 +57,11 @@ public class LocationController {
 	public Map<String, Boolean> removeLocation(@PathVariable("name") String name) throws ResourceNotFoundException {
 		return locServ.remove(name);
 
+	}
+	
+	@GetMapping("/locations/{location}")
+	public ResponseEntity<List<Posts>> getPostsByLocationId(@PathVariable("location")  Location location) {
+		return new ResponseEntity<>(locServ.getAllPostsByLocationId(location), HttpStatus.OK);
 	}
 
 }
