@@ -11,24 +11,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Locations")
+@Table(name = "Users")
 @NoArgsConstructor
-public @Data class Location {
-
+public @Data class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private String location;
-
-	public Location(String name) {
-		this.location = name;
+	@Column(unique = true)
+	private String email;
+	
+	private String username;
+	private String password;
+	
+	public User(String email) {
+		this.email = email;
 
 	}
-
-	public Location(Integer id, String location) {
+	
+	public User(Integer id, String email, String username, String password) {
 		this.id = id;
-		this.location = location;
+		this.email = email;
+		this.username = username;
+		this.password = password;
 	}
-
-
 }
