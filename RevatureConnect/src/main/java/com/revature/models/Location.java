@@ -6,9 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "locations")
-public class Location {
+public @Data class Location {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,10 +24,11 @@ public class Location {
 		this.city = city;
 		this.state = state; 
 	}
-	
+
 	public Location(Integer id, String city, String state) { 
 		this.id = id; 
 		this.city = city; 
 		this.state = state; 
 	}
+
 }
