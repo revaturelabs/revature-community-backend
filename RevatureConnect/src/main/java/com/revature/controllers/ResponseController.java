@@ -40,6 +40,7 @@ public class ResponseController {
 
         r.setContent(response.getContent());
         r.setPostId(response.getPostId());
+        r.setUserId(response.getUserId());
         Response responseObject = rservice.submitResponse(response);
         return new ResponseEntity<Response>(responseObject, HttpStatus.OK);
     }
@@ -47,6 +48,7 @@ public class ResponseController {
     @PutMapping("/responses/update")
     public ResponseEntity<Response> put(@RequestBody Response response) {
         Response updated = rservice.updateResponse(response);
+        System.out.println("test" + response);
         return new ResponseEntity<Response>(updated, HttpStatus.OK);
     }
     
@@ -61,4 +63,5 @@ public class ResponseController {
     	Response response = rservice.getResponseById(id);
     	return new ResponseEntity<Response> (response, HttpStatus.OK);
     }
+    
 }
