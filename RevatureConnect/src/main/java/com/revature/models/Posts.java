@@ -38,14 +38,14 @@ public class Posts {
 
 		@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	    @JoinColumn(name = "location_id", nullable = false)
-		private Location location; 
+		private int locationId;
 		
 		@Enumerated(EnumType.STRING)
 		@Column(name = "category_type")
 		private CategoryType categoryType; 
 
-		public Posts(Location location) {
-			this.location = location;
+		public Posts(int locationId) {
+			this.locationId = locationId;
 		}
 		
 		
