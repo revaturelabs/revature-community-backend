@@ -37,7 +37,7 @@ public class LocationController {
 	}
 
 
-	@PostMapping(path = "/add/{name}", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = "/add/{name}")
 	public ResponseEntity<Object> createNewLocation(@PathVariable(value = "name") String nameLoc) {
 		Location locToSave = new Location(nameLoc);
 		Location locSaved = locServ.save(locToSave);
