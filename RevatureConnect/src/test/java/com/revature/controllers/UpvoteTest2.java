@@ -14,7 +14,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.models.Posts;
 import com.revature.models.Upvote;
+import com.revature.models.User;
 import com.revature.service.UpvoteService;
 
 @RunWith(SpringRunner.class)
@@ -34,10 +36,12 @@ public class UpvoteTest2 {
 	            throw new RuntimeException(e);
 	        }
 	}
+	public Posts p = new Posts();
+	public User u = new User();
 	
 	@Test
 	public void addUpvoteTest() throws Exception {
-		Upvote upvote = new Upvote(1,1);
+		Upvote upvote = new Upvote(p,u);
 		
 		mvc.perform(post("/upvote/add-upvote")
 				.contentType(MediaType.APPLICATION_JSON)
@@ -48,7 +52,7 @@ public class UpvoteTest2 {
 	
 	@Test
 	public void deleteUpvoteTest() throws Exception {
-		Upvote upvote = new Upvote(1,1);
+		Upvote upvote = new Upvote(p,u);
 		
 		mvc.perform(post("/upvote/add-upvote")
 				.contentType(MediaType.APPLICATION_JSON)
