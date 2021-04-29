@@ -6,12 +6,14 @@ import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.revature.models.CategoryType;
 import com.revature.models.Location;
 import com.revature.models.Posts;
 //import com.revature.controller.ResponseController;
@@ -32,20 +34,29 @@ public class ResponseControllerIntegrationTest {
 	@Test
 	public void whenFindByPostId_thenReturnResponses() {
 		//given - sets Response object to persist in mock database
-		Posts id = new Posts();
+		Location loc = new Location(1, "Chicago", "Illinois");
+//		entityManager.persist(loc);
+	
+		
+		Posts id = new Posts("hi", "max", loc, CategoryType.Entertainment);
+//		entityManager.persist(id);
+
+	
 		Response response = new Response("This is a test", id, 1);
 		
 		entityManager.persist(response);
 		entityManager.flush();
 		
+//		Mockito.when(rrepo.getResponsesByPostId(id).thenReturn(response.getContent()));
 		//when - method to run
 		List<Response> found = rrepo.getResponsesByPostId(id);
 		
 		//then - asserts that the method returns the correct Content
 		for (Response f : found) {
 		assertThat(f.getContent()).isEqualTo(response.getContent());
+
 		}
 	}
-	
 
 }
+

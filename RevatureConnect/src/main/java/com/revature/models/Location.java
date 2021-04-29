@@ -33,4 +33,5 @@ public @Data class Location {
 		this.state = state; 
 	}
 
+
 }

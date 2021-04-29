@@ -38,10 +38,13 @@ public class ResponseController {
     public ResponseEntity<Response> save(@RequestBody Response response) throws IOException {
 
         Response r = new Response(); 
-
+        
         r.setContent(response.getContent());
+        System.out.println(response.getContent());
         r.setPostId(response.getPostId());
         r.setUserId(response.getUserId());
+        System.out.println(r);
+        
         Response responseObject = rservice.submitResponse(response);
         return new ResponseEntity<Response>(responseObject, HttpStatus.OK);
     }

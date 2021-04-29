@@ -1,6 +1,5 @@
 package com.revature.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,12 +36,9 @@ public @Data class Response {
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
     
-	@ManyToOne(fetch = FetchType.EAGER, optional = false, cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "post_id", nullable = false)
 	private Posts postId;
-    
-//    @Column(name = "postId")
-//    private Integer postId;
 
     @Column(name = "userId")
     private Integer userId;
