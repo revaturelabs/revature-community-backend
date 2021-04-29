@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +17,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Location;
-import com.revature.models.Posts;
 import com.revature.service.LocationService;
 
 @RestController
@@ -35,6 +33,13 @@ public class LocationController {
 		return locServ.findAll();
 
 	}
+	
+	@GetMapping(path="/{id}",produces="application/json")
+	public Location getLocationById(@PathVariable(value="id")int id) throws ResourceNotFoundException {
+		return locServ.findOne(id);
+	}
+
+
 
 @PostMapping(path = "/add/{city}/{state}")
 	public ResponseEntity<Object> createNewLocation(@PathVariable(value = "city") String city, @PathVariable(value = "state") String state) {
@@ -44,9 +49,11 @@ public class LocationController {
 
 
 		//creating path to the location that was saved
-		URI locationURI = ServletUriComponentsBuilder.fromCurrentRequest()
+
+		URI locationURI = ServletUriComponentsBuilder.fromPath("")
 				.path("/{id}")
 				.buildAndExpand(locSaved.getId())
+
 				.toUri();
 		
 		//sending the path to the location in the response rather than the location obj itself
@@ -54,28 +61,20 @@ public class LocationController {
 		//If it turns out we are always immediately using the location object in the front end we can change this method
 
 		return ResponseEntity.created(locationURI).build();
+		
 	}
+
+
 
 	@DeleteMapping("/remove/{city}/{state}")
 	public Map<String, Boolean> removeLocation(
 			@PathVariable("city") String city, @PathVariable("state") String state) 
 					throws ResourceNotFoundException {
 		return locServ.remove(city, state);
-
 	}
-
-//	Move to work with PostsController and PostsService
-	
-//	@GetMapping("/locations/{location_id}")
-//	public ResponseEntity<List<Posts>> getPostsByLocationId(@PathVariable("location_id") int locationId) {
-//		List<Posts> postsByLocationId = locServ.getAllPostsByLocationId(locationId);
-//		return new ResponseEntity<List<Posts>>(postsByLocationId, HttpStatus.OK);
-//	}
-//
-//	@GetMapping("/locations/{categoryId}")
-//	public ResponseEntity<List<Posts>> getPostsByCategoryId(@PathVariable("categoryId") int categoryId) {
-//		List<Posts> postsByCategoryId = locServ.getAllByCategoryId(categoryId);
-//		return new ResponseEntity<List<Posts>>(postsByCategoryId, HttpStatus.OK);
-//	}
-
 }
+
+
+
+
+

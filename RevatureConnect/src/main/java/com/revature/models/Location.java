@@ -26,14 +26,12 @@ public @Data class Location {
 		this.city = city;
 		this.state = state; 
 	}
-	
+
 	public Location(Integer id, String city, String state) { 
 		this.id = id; 
 		this.city = city; 
 		this.state = state; 
 	}
-	
-	public Location(Integer id) {
-		this.id = id;
-	}
+
+
 }

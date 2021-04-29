@@ -37,4 +37,5 @@ public @Data class Posts {
 	@Column(name = "category_type")
 	private CategoryType categoryType;
 
+
 }
