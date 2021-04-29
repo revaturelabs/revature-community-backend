@@ -23,12 +23,12 @@ import com.revature.service.LocationService;
 @ExtendWith(MockitoExtension.class)
 //@WebMvcTest(LocationController.class)
 public class LocationControllerTest {
-
-	@InjectMocks
-	LocationController locationController;
-
-	@Mock
-	private LocationService locationService;
+//
+//	@InjectMocks
+//	LocationController locationController;
+//
+//	@Mock
+//	private LocationService locationService;
 
 //	@Test
 //	void deleteLocation() throws Exception { 
@@ -41,6 +41,52 @@ public class LocationControllerTest {
 //		andExpect(jsonPath("$", hasSize(1))).
 //			andDo(print()); 
 //	}
+<<<<<<< HEAD
+//
+//
+//	@Test
+//	void testGetAllLocations() throws Exception {
+//		List<Location> locations = new ArrayList<>();
+//
+//		Location location1 = new Location(1, "Houston, Texas");
+//		Location location2 = new Location(2, "Jackson, New Jersey");
+//
+//		locations.add(location1);
+//		locations.add(location2);
+//
+//		when(locationService.findAll()).thenReturn(locations);
+//
+//		// when
+//		List<Location> resultLocations = locationController.getAllLocations();
+//
+//		// then
+//		assertThat(resultLocations.size()).isEqualTo(2);
+//
+//		assertThat(resultLocations.get(0)).isEqualTo(location1);
+//		assertThat(resultLocations.get(1)).isEqualTo(location2);
+//	}
+//
+//	@Test
+//	void createLocation() throws Exception {
+//
+//
+//
+//		MockHttpServletRequest request = new MockHttpServletRequest();
+//		RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
+//		Location locationToReturn = new Location(1, "Virginia");
+//		Location locationToSave = new Location("Virginia");
+//	
+//		when(locationService.save(locationToSave)).thenReturn(locationToReturn);
+//
+//		ResponseEntity<Object> responseEntity = locationController.createNewLocation("Virginia");
+//
+//		assertThat(responseEntity.getStatusCodeValue()).isEqualTo(201);
+//		assertThat(responseEntity.getHeaders().getLocation().getPath()).isEqualTo("/1");
+//
+//	}
+//	 
+//
+=======
 
 	@Test
 	void testGetAllLocations() throws Exception {
@@ -89,4 +135,5 @@ public class LocationControllerTest {
 		assertThat(responseEntity.getHeaders().getLocation().getPath()).isEqualTo("/1");
 
 	}
+>>>>>>> 3234a33e42f18d17a393a0a15834532ed13db808
 }

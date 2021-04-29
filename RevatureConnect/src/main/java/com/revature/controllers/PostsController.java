@@ -34,7 +34,7 @@ public class PostsController {
 	
 	@PostMapping("/addPost")
 	public ResponseEntity<Posts> addPost(@RequestBody Posts post){
-		
+		System.out.println("Post info: " + post);
 		Posts newPost = postsService.addPost(post);
 		
 		return ResponseEntity.ok().body(newPost);

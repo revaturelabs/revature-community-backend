@@ -52,7 +52,7 @@ public class LocationController {
 
 		URI locationURI = ServletUriComponentsBuilder.fromPath("")
 				.path("/{id}")
-				.buildAndExpand(locSaved.getLocationId())
+				.buildAndExpand(locSaved.getId())
 
 				.toUri();
 		
@@ -71,9 +71,10 @@ public class LocationController {
 			@PathVariable("city") String city, @PathVariable("state") String state) 
 					throws ResourceNotFoundException {
 		return locServ.remove(city, state);
-
-
 	}
-
 }
+
+
+
+
 

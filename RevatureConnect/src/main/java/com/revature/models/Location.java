@@ -7,9 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "locations")
+@NoArgsConstructor
 public @Data class Location {
 
 	@Id
@@ -30,5 +32,6 @@ public @Data class Location {
 		this.city = city; 
 		this.state = state; 
 	}
+
 
 }
