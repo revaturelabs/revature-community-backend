@@ -48,15 +48,11 @@ public class LocationControllerTest {
 	@Test
 	void testGetAllLocations() throws Exception {
 		List<Location> locations = new ArrayList<>();
-<<<<<<< HEAD
-		Location location1 = new Location(1, "Houston, Texas");
-		Location location2 = new Location(2, "Jackson, New Jersey");
 
-=======
 		Location location1 = new Location(2,  "Houston", "Texas");
 		Location location2 = new Location(3, "Jackson", "New Jersey");
 		
->>>>>>> 8dbcf8e57009cd17a26b3eabb93769e6a08e1730
+
 		locations.add(location1);
 		locations.add(location2);
 
@@ -74,10 +70,9 @@ public class LocationControllerTest {
 
 	@Test
 	void createLocation() throws Exception {
-<<<<<<< HEAD
-=======
+
 		Location location = new Location(5, "Houston", "Texas");
->>>>>>> 8dbcf8e57009cd17a26b3eabb93769e6a08e1730
+
 
 
 		MockHttpServletRequest request = new MockHttpServletRequest();
