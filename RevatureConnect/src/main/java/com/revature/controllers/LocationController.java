@@ -64,16 +64,18 @@ public class LocationController {
 
 	}
 
-	@GetMapping("/locations/{location_id}")
-	public ResponseEntity<List<Posts>> getPostsByLocationId(@PathVariable("location_id") int locationId) {
-		List<Posts> postsByLocationId = locServ.getAllPostsByLocationId(locationId);
-		return new ResponseEntity<List<Posts>>(postsByLocationId, HttpStatus.OK);
-	}
-
-	@GetMapping("/locations/{categoryId}")
-	public ResponseEntity<List<Posts>> getPostsByCategoryId(@PathVariable("categoryId") int categoryId) {
-		List<Posts> postsByCategoryId = locServ.getAllByCategoryId(categoryId);
-		return new ResponseEntity<List<Posts>>(postsByCategoryId, HttpStatus.OK);
-	}
+//	Move to work with PostsController and PostsService
+	
+//	@GetMapping("/locations/{location_id}")
+//	public ResponseEntity<List<Posts>> getPostsByLocationId(@PathVariable("location_id") int locationId) {
+//		List<Posts> postsByLocationId = locServ.getAllPostsByLocationId(locationId);
+//		return new ResponseEntity<List<Posts>>(postsByLocationId, HttpStatus.OK);
+//	}
+//
+//	@GetMapping("/locations/{categoryId}")
+//	public ResponseEntity<List<Posts>> getPostsByCategoryId(@PathVariable("categoryId") int categoryId) {
+//		List<Posts> postsByCategoryId = locServ.getAllByCategoryId(categoryId);
+//		return new ResponseEntity<List<Posts>>(postsByCategoryId, HttpStatus.OK);
+//	}
 
 }
