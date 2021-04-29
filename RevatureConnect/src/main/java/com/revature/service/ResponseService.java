@@ -15,7 +15,7 @@ public class ResponseService {
     @Autowired
     private ResponseRepository rrepo;
 
-    public List<Response> getResponsesByPostId(long postId) {
+    public List<Response> getResponsesByPostId(Integer postId) {
         return rrepo.getResponsesByPostId(postId); 
     }
 
@@ -29,12 +29,12 @@ public class ResponseService {
         updatedr.setContent(response.getContent());
         return rrepo.save(updatedr);
     }
-    public void deleteResponse(long id) {
+    public void deleteResponse(Integer id) {
         Response deleted = rrepo.findById(id).get();
         rrepo.delete(deleted);
     }
     
-    public Response getResponseById(long id) {
+    public Response getResponseById(Integer id) {
     	return rrepo.findById(id).get();
     }
 }

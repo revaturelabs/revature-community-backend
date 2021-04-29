@@ -35,9 +35,9 @@ public class Posts {
 		
 
 
-		@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	    @JoinColumn(name = "location_id", nullable = false)
-		private int locationId;
+//		@ManyToOne(fetch = FetchType.EAGER, optional = false)
+//	    @JoinColumn(name = "location_id", nullable = false)
+//		private int locationId;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "category_type")
