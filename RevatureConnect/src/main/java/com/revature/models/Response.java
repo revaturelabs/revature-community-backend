@@ -2,15 +2,19 @@ package com.revature.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "response")
@@ -36,5 +40,16 @@ public @Data class Response {
 
     @Column(name = "userId")
     private long userId;
+    
+    @Column(name="username")
+    private String username;
+    
+	@ManyToOne(fetch = FetchType.LAZY, optional=false)
+	  @JoinColumns({
+		    @JoinColumn(name = "userId", referencedColumnName="userId", insertable=false, updatable=false),
+			@JoinColumn(name = "username", referencedColumnName="username", insertable=false, updatable=false)
+	  })
+	@JsonBackReference
+	private User user;
     
 }
