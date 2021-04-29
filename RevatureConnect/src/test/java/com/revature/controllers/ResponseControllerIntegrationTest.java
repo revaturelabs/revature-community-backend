@@ -12,6 +12,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.revature.models.Location;
+import com.revature.models.Posts;
 //import com.revature.controller.ResponseController;
 import com.revature.models.Response;
 import com.revature.repositories.ResponseRepository;
@@ -30,12 +32,14 @@ public class ResponseControllerIntegrationTest {
 	@Test
 	public void whenFindByPostId_thenReturnResponses() {
 		//given - sets Response object to persist in mock database
-		Response response = new Response("This is a test", 1, 1);
+		Posts id = new Posts();
+		Response response = new Response("This is a test", id, 1);
+		
 		entityManager.persist(response);
 		entityManager.flush();
 		
 		//when - method to run
-		List<Response> found = rrepo.getResponsesByPostId(1);
+		List<Response> found = rrepo.getResponsesByPostId(id);
 		
 		//then - asserts that the method returns the correct Content
 		for (Response f : found) {

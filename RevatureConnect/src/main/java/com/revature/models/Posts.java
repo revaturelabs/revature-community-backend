@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -35,18 +36,13 @@ public class Posts {
 		
 
 
-//		@ManyToOne(fetch = FetchType.EAGER, optional = false)
-//	    @JoinColumn(name = "location_id", nullable = false)
-//		private int locationId;
+		@ManyToOne(fetch = FetchType.EAGER, optional = false, cascade=CascadeType.ALL)
+	    @JoinColumn(name = "location_id", nullable = false)
+		private Location locationId;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "category_type")
 	private CategoryType categoryType; 
-
-
-		public Posts(int locationId) {
-			this.locationId = locationId;
-		}
 		
 		
 

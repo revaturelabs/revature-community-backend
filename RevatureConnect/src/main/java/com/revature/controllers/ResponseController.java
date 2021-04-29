@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.models.Posts;
 import com.revature.models.Response;
 import com.revature.service.ResponseService;
 
@@ -28,7 +29,7 @@ public class ResponseController {
     private ResponseService rservice; 
 
     @GetMapping("/responses/{postId}")
-    public ResponseEntity<List<Response>> getresponsesbypostid(@PathVariable("postId") Integer postId) { 
+    public ResponseEntity<List<Response>> getresponsesbypostid(@PathVariable("postId") Posts postId) { 
         List<Response> rs = rservice.getResponsesByPostId(postId);
         return new ResponseEntity<List<Response>>(rs, HttpStatus.OK); 
     }
