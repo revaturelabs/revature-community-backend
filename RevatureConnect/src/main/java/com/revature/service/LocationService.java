@@ -55,5 +55,6 @@ public class LocationService {
 	public Location findOne(int id) throws ResourceNotFoundException {
 		return locRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Location not found"));
 	}
+
 }
 

@@ -71,9 +71,10 @@ public class LocationController {
 			@PathVariable("city") String city, @PathVariable("state") String state) 
 					throws ResourceNotFoundException {
 		return locServ.remove(city, state);
-
-
 	}
-
 }
+
+
+
+
 
