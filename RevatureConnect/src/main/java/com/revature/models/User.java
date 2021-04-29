@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,14 +21,15 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Users")
 @NoArgsConstructor
-public @Data class User {
+public @Data class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "userId", nullable=false)
 	private Integer id;
 	@Column(unique = true, nullable=false)
 	private String email;
-	@Column(nullable=false)
+	
+	@Column(name="username", nullable=false)
 	private String username;
 //	@ColumnTransformer(
 //		    read =  "pgp_sym_decrypt(" +
