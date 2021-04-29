@@ -17,9 +17,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-
 import com.revature.models.Location;
-import com.revature.repositories.PostsRepository;
 import com.revature.service.LocationService;
 
 @ExtendWith(MockitoExtension.class)
@@ -43,7 +41,6 @@ public class LocationControllerTest {
 //		andExpect(jsonPath("$", hasSize(1))).
 //			andDo(print()); 
 //	}
-
 
 	@Test
 	void testGetAllLocations() throws Exception {
@@ -73,12 +70,17 @@ public class LocationControllerTest {
 		Location location = new Location(5, "Houston", "Texas");
 
 
-
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
+<<<<<<< HEAD
 		Location locationToReturn = new Location("Richmond", "Virginia");
 		Location locationToSave = new Location("Richmond", "Virginia");
 	
+=======
+		Location locationToReturn = new Location(1, "Virginia");
+		Location locationToSave = new Location("Virginia");
+
+>>>>>>> 3234a33e42f18d17a393a0a15834532ed13db808
 		when(locationService.save(locationToSave)).thenReturn(locationToReturn);
 
 		ResponseEntity<Object> responseEntity = locationController.createNewLocation("Richmond", "Virginia");
@@ -87,6 +89,4 @@ public class LocationControllerTest {
 		assertThat(responseEntity.getHeaders().getLocation().getPath()).isEqualTo("/1");
 
 	}
-	 
-
 }

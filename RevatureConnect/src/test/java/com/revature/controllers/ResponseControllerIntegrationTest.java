@@ -30,7 +30,7 @@ public class ResponseControllerIntegrationTest {
 	@Test
 	public void whenFindByPostId_thenReturnResponses() {
 		//given - sets Response object to persist in mock database
-		Response response = new Response("This is a test", 1);
+		Response response = new Response("This is a test", 1, 1);
 		entityManager.persist(response);
 		entityManager.flush();
 		
