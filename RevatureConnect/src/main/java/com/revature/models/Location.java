@@ -31,4 +31,13 @@ public @Data class Location {
 		this.state = state; 
 	}
 
+	//ignore this
+	public Location(int i, String state2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Location(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
 }

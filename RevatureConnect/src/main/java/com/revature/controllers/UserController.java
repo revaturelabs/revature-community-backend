@@ -21,7 +21,7 @@ import com.revature.models.User;
 import com.revature.service.UserService;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins="*")
 @RequestMapping("/users")
 public class UserController {	
 
@@ -41,6 +41,12 @@ public class UserController {
 	}
 
 
+	@PostMapping(path="/login")
+	public User loginUser(@RequestBody User user) throws ResourceNotFoundException{
+		User userLoggedIn = userServ.login(user);
+		
+		return userLoggedIn;
+	}
 	@PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Object> createNewUser(@RequestBody User userToAdd) {
 	

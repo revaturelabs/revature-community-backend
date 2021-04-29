@@ -33,6 +33,8 @@ public @Data class User {
 //		)
 	@Column(name = "pass", columnDefinition = "bytea", nullable=false)
 	private String password;
+	private String firstName;
+	private String lastName;
 	
 	public User(String email) {
 		this.email = email;

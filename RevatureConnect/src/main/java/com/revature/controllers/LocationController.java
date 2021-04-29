@@ -52,7 +52,7 @@ public class LocationController {
 
 		URI locationURI = ServletUriComponentsBuilder.fromPath("")
 				.path("/{id}")
-				.buildAndExpand(locSaved.getLocationId())
+				.buildAndExpand(locSaved.getId())
 
 				.toUri();
 		
