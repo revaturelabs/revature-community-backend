@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public @Data class Downvote {
 
-	public Downvote(Posts postId, User userId) {
+	public Downvote(int postId, int userId) {
 		this.postId = postId;
 		this.userId = userId;
 	}
@@ -28,14 +28,18 @@ public @Data class Downvote {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
     
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "post_id", referencedColumnName="post_Id", nullable=false, insertable=false, updatable=false)
     @Column(name = "postId")
-    private Posts postId;
+	private int postId;
+    
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "postId", referencedColumnName="post_Id", nullable=false, insertable=false, updatable=false)
+    private Posts post;
 
+	@Column(name = "userId")
+	private int userId;
+	
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "userId", referencedColumnName="userId", nullable=false, insertable=false, updatable=false)
-    @Column(name = "userId")
-    private User userId;
+    private User user;
 	
 }
