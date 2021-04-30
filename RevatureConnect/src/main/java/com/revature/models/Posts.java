@@ -48,5 +48,4 @@ public @Data class Posts {
 		this.locationId = locationId;
 		this.categoryType = categoryType;
 	}
-	
 }

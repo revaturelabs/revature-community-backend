@@ -43,6 +43,8 @@ public @Data class User implements Serializable{
 //		)
 	@Column(name = "pass", nullable=false)
 	private String password;
+	private String firstName;
+	private String lastName;
 	
 	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
 	@JsonManagedReference
