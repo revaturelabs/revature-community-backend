@@ -13,12 +13,17 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.revature.models.Downvote;
+import com.revature.models.Posts;
+import com.revature.models.User;
 import com.revature.repositories.DownvoteRepository;
 import com.revature.repositories.ResponseRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class DownvoteControllerIntegrationTest {
+	
+	Posts p = new Posts();
+	User u = new User();
 	
 	@Autowired
 	private TestEntityManager entityManager; 
@@ -30,12 +35,12 @@ public class DownvoteControllerIntegrationTest {
 	@Test
 	public void whenFindByPostId_thenReturnDownvotes() {
 		//given - sets Response object to persist in mock database
-		Downvote downvote = new Downvote(1, 1);
+		Downvote downvote = new Downvote(p, u);
 		entityManager.persist(downvote);
 		entityManager.flush();
 		
 		//when - method to run
-		List<Downvote> found = dvrepo.getDownvotesByPostId(1);
+		List<Downvote> found = dvrepo.getDownvotesByPostId(p);
 		
 		//then - asserts that the method returns the correct Content
 		for (Downvote f : found) {

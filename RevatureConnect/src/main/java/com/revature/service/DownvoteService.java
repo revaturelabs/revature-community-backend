@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.Downvote;
+import com.revature.models.Posts;
 import com.revature.repositories.DownvoteRepository;
 
 @Service

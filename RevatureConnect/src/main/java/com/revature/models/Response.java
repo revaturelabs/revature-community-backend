@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -39,7 +40,7 @@ public @Data class Response {
     private String content;
     
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "post_id", nullable = false)
+    @JoinColumn(name = "post_id",  nullable = false)
 	private Posts postId;
 
     @Column(name = "userId")

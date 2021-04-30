@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.Downvote;
+import com.revature.models.Posts;
 import com.revature.service.DownvoteService;
 
 @CrossOrigin("*")
