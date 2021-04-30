@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -43,5 +45,16 @@ public @Data class Response {
     @Column(name = "userId")
     private Integer userId;
 
+    
+    @Column(name="username")
+    private String username;
+    
+	@ManyToOne(fetch = FetchType.LAZY, optional=false)
+	  @JoinColumns({
+		    @JoinColumn(name = "userId", referencedColumnName="userId", insertable=false, updatable=false),
+			@JoinColumn(name = "username", referencedColumnName="username", insertable=false, updatable=false)
+	  })
+	@JsonBackReference
+	private User user;
     
 }

@@ -33,12 +33,14 @@ public @Data class Posts {
 
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "location_id", nullable = false)
+
+  @JoinColumn(name = "location_id", nullable = false)
+
 	private Location locationId;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "category_type")
-	private CategoryType categoryType;
+	private CategoryType categoryType; 
 
 	public Posts(String title, String content, Location locationId, CategoryType categoryType) {
 		this.title = title;
