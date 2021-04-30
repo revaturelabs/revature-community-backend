@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -22,11 +23,12 @@ import lombok.NoArgsConstructor;
 public @Data class Response {
 
 
-	public Response(String content, Posts postId, Integer userId) {
+	public Response(String content, int postId, Integer userId, String username) {
 
 		this.content = content;
 		this.postId = postId;
 		this.userId = userId;
+		this.username= username;
 	}
 
 	
@@ -38,9 +40,8 @@ public @Data class Response {
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
     
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "post_id", nullable = false)
-	private Posts postId;
+    @Column(name = "post_id")
+	private int postId;
 
     @Column(name = "userId")
     private Integer userId;
@@ -56,5 +57,9 @@ public @Data class Response {
 	  })
 	@JsonBackReference
 	private User user;
+	
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "post_id", referencedColumnName="post_id", insertable=false, updatable=false)
+	private Posts post;
     
 }

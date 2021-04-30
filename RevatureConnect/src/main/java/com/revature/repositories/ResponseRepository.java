@@ -14,6 +14,6 @@ import com.revature.models.Response;
 public interface ResponseRepository extends JpaRepository<Response, Integer> {
 
     @Query(value = "SELECT * FROM Response WHERE response.post_id = :postId", nativeQuery = true)
-    List<Response> getResponsesByPostId(@Param("postId") Posts postId);
+    List<Response> getResponsesByPostId(@Param("postId") int postId);
 
 }

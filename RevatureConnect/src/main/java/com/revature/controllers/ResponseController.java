@@ -29,7 +29,7 @@ public class ResponseController {
     private ResponseService rservice; 
 
     @GetMapping("/responses/{postId}")
-    public ResponseEntity<List<Response>> getresponsesbypostid(@PathVariable("postId") Posts postId) { 
+    public ResponseEntity<List<Response>> getresponsesbypostid(@PathVariable("postId") int postId) { 
         List<Response> rs = rservice.getResponsesByPostId(postId);
         return new ResponseEntity<List<Response>>(rs, HttpStatus.OK); 
     }
