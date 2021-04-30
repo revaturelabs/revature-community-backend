@@ -47,8 +47,9 @@ public class ResponseControllerPostTest {
 		// set Response object
 		Response r = new Response();
 		r.setContent("hello i am test");
-		r.setPostId(id);
+		r.setPostId(1);
 		r.setUserId(1);
+		r.setUsername("name");
 		
 		// insert Response object, check that method ran successfully
 		mvc.perform(post("/api/v1/responses/submit-response")
@@ -60,7 +61,7 @@ public class ResponseControllerPostTest {
 	@Test
 	public void updateResponseTest() throws Exception {
 		// set Response object
-		Response response = new Response("Testing update method",id, 1);
+		Response response = new Response("Testing update method",1, 1, "name");
 		
 		// insert Response object into mock database
 		mvc.perform(post("/api/v1/responses/submit-response")
@@ -69,10 +70,10 @@ public class ResponseControllerPostTest {
 		
 		// set new response object with same Id as old object
 		Response r = new Response();
-		r.setId(1);
 		r.setContent("hello i am test");
-		r.setPostId(id);
+		r.setPostId(1);
 		r.setUserId(1);
+		r.setUsername("name");
 		
 		// perform update method, check that it ran successfully
 		mvc.perform(put("/api/v1/responses/update")
@@ -85,10 +86,10 @@ public class ResponseControllerPostTest {
 	public void deleteResponseTest() throws Exception {
 		// set Response object
 		Response r = new Response();
-		r.setId(1);
 		r.setContent("hello i am test");
-		r.setPostId(id);
+		r.setPostId(1);
 		r.setUserId(1);
+		r.setUsername("name");
 		
 		// insert Response object into mock database
 		mvc.perform(post("/api/v1/responses/submit-response")
@@ -104,10 +105,10 @@ public class ResponseControllerPostTest {
 	public void getResponseByIdTest() throws Exception {
 		// set Response object
 		Response r = new Response();
-		r.setId(1);
 		r.setContent("hello i am test");
-		r.setPostId(id);
+		r.setPostId(1);
 		r.setUserId(1);
+		r.setUsername("name");
 		
 		// insert Response object into mock database
 		mvc.perform(post("/api/v1/responses/submit-response")

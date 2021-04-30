@@ -11,9 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.revature.models.Posts;
 import com.revature.models.Upvote;
-import com.revature.models.User;
 import com.revature.repositories.UpvoteRepository;
 
 @RunWith(SpringRunner.class)
@@ -26,18 +24,15 @@ public class UpvoteTest {
 	@Autowired
 	private UpvoteRepository urepo;
 	
-	public Posts p = new Posts();
-	public User u = new User();
-	
 	@Test
 	public void whenFindPostById_thenReturnUpvotes() {
 		//given
-		Upvote upvote = new Upvote(p,u);
+		Upvote upvote = new Upvote(1,1);
 		entityManager.persist(upvote);
 		entityManager.flush();
 		
 		//when
-		List<Upvote> found = urepo.getUpvotesByPostId(p);
+		List<Upvote> found = urepo.getUpvotesByPostId(1);
 		
 		for (Upvote f : found) {
 		assertThat(f.getUserId()).isEqualTo(upvote.getUserId());
