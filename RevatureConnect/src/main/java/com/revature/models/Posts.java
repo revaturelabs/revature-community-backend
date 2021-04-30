@@ -13,9 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "post")
+@NoArgsConstructor
 public @Data class Posts {
 
 	@Id
@@ -29,6 +31,7 @@ public @Data class Posts {
 	@Column(name = "content")
 	private String content;
 
+
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 
   @JoinColumn(name = "location_id", nullable = false)
@@ -39,5 +42,11 @@ public @Data class Posts {
 	@Column(name = "category_type")
 	private CategoryType categoryType; 
 
-
+	public Posts(String title, String content, Location locationId, CategoryType categoryType) {
+		this.title = title;
+		this.content = content;
+		this.locationId = locationId;
+		this.categoryType = categoryType;
+	}
+	
 }
