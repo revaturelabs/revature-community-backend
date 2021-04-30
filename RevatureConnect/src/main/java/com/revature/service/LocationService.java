@@ -10,13 +10,18 @@ import org.springframework.stereotype.Service;
 
 import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Location;
+import com.revature.models.Posts;
 import com.revature.repositories.LocationRepository;
+import com.revature.repositories.PostsRepository;
 
 @Service
 public class LocationService {
 
 	@Autowired
 	LocationRepository locRepo;
+	
+	@Autowired
+	PostsRepository postRepo;
 
 	// use to get all the locations from db
 	public List<Location> findAll() {
@@ -30,20 +35,14 @@ public class LocationService {
 	public Location save(Location location) {
 		Location loc = locRepo.save(location);
 		return loc;
-	}
 
 	}
-	
-	/*public List<Post> findAllByCategory(String category) {
-		List<Post> posts = locRepo.findAllByCategory(category);
-		return posts;
-	}*/
 	
 
 	// use to remove a location from the db
-	public Map<String, Boolean> remove(String name) throws ResourceNotFoundException {
+	public Map<String, Boolean> remove(String city, String state) throws ResourceNotFoundException {
 
-		Location locToDel = locRepo.findOne(Example.of(new Location(name)))
+		Location locToDel = locRepo.findOne(Example.of(new Location(city, state)))
 				.orElseThrow(() -> new ResourceNotFoundException("Location not found"));
 
 		locRepo.delete(locToDel);

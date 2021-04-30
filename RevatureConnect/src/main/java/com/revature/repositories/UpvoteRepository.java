@@ -8,12 +8,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.revature.models.Posts;
-import com.revature.models.Response;
+import com.revature.models.Upvote;
 
 @Repository
-public interface ResponseRepository extends JpaRepository<Response, Integer> {
+public interface UpvoteRepository extends JpaRepository<Upvote, Integer>{
 
-    @Query(value = "SELECT * FROM Response WHERE response.post_id = :postId", nativeQuery = true)
-    List<Response> getResponsesByPostId(@Param("postId") Posts postId);
-
+    @Query(value = "SELECT * FROM upvote WHERE upvote.post_id = :postId", nativeQuery = true)
+    List<Upvote> getUpvotesByPostId(@Param("postId") Posts postId);
 }

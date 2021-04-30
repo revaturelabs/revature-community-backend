@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.controllers.ResponseController;
+import com.revature.models.Posts;
 import com.revature.models.Response;
 import com.revature.service.ResponseService;
 
@@ -38,13 +39,16 @@ public class ResponseControllerPostTest {
 	            throw new RuntimeException(e);
 	        }
 	}
+	public Posts id = new Posts();
+	
 	
 	@Test
 	public void submitResponseTest() throws Exception {
 		// set Response object
 		Response r = new Response();
 		r.setContent("hello i am test");
-		r.setPostId(1);
+		r.setPostId(id);
+		r.setUserId(1);
 		
 		// insert Response object, check that method ran successfully
 		mvc.perform(post("/api/v1/responses/submit-response")
@@ -56,7 +60,7 @@ public class ResponseControllerPostTest {
 	@Test
 	public void updateResponseTest() throws Exception {
 		// set Response object
-		Response response = new Response("Testing update method",1);
+		Response response = new Response("Testing update method",id, 1);
 		
 		// insert Response object into mock database
 		mvc.perform(post("/api/v1/responses/submit-response")
@@ -67,7 +71,8 @@ public class ResponseControllerPostTest {
 		Response r = new Response();
 		r.setId(1);
 		r.setContent("hello i am test");
-		r.setPostId(1);
+		r.setPostId(id);
+		r.setUserId(1);
 		
 		// perform update method, check that it ran successfully
 		mvc.perform(put("/api/v1/responses/update")
@@ -82,7 +87,8 @@ public class ResponseControllerPostTest {
 		Response r = new Response();
 		r.setId(1);
 		r.setContent("hello i am test");
-		r.setPostId(1);
+		r.setPostId(id);
+		r.setUserId(1);
 		
 		// insert Response object into mock database
 		mvc.perform(post("/api/v1/responses/submit-response")
@@ -100,7 +106,8 @@ public class ResponseControllerPostTest {
 		Response r = new Response();
 		r.setId(1);
 		r.setContent("hello i am test");
-		r.setPostId(1);
+		r.setPostId(id);
+		r.setUserId(1);
 		
 		// insert Response object into mock database
 		mvc.perform(post("/api/v1/responses/submit-response")

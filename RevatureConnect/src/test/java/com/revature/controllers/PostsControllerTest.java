@@ -25,22 +25,22 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.revature.models.CategoryType;
 import com.revature.models.Location;
 import com.revature.models.Posts;
-import com.revature.repositories.PostRepository;
+import com.revature.repositories.PostsRepository;
 
-@WebMvcTest(value=PostController.class)
+@WebMvcTest(value=PostsController.class)
 class PostControllerTest {
 	
 	@Autowired
 	private MockMvc mockMvc;
 	
 	//mocking data
-	Location loc = new Location(1,"mockLocation");
+	Location loc = new Location(1,"mockcity","mockstate");
 	@MockBean
-	private PostRepository postRepository;
+	private PostsRepository postRepository;
 	
 	@Enumerated(EnumType.STRING)
 	CategoryType ctype;
-	Posts mockpost = new Posts(1,"dtitle","dcontent",loc,CategoryType.Housing);
+	Posts mockpost = new Posts("dtitle","dcontent",loc,CategoryType.Housing);
 	List<Posts> mockpostList = new ArrayList<Posts>();
 	
 	
