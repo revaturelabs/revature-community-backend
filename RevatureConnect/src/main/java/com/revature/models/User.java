@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -45,6 +47,10 @@ public @Data class User implements Serializable{
 	private String password;
 	private String firstName;
 	private String lastName;
+	
+	@ManyToOne
+	@JoinColumn(name="role_id")
+	private Role role;
 	
 	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
 	@JsonManagedReference
