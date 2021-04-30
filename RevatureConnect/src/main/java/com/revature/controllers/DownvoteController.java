@@ -16,23 +16,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.Downvote;
+import com.revature.models.Posts;
 import com.revature.service.DownvoteService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/downvotes")
 public class DownvoteController {
 
     @Autowired
     private DownvoteService dvservice; 
     
-    @GetMapping("/downvotes/{postId}")
+    @GetMapping("/{postId}")
     public ResponseEntity<List<Downvote>> getalldownvotesbypostid(@PathVariable("postId") int postId) { 
         List<Downvote> dv = dvservice.getAllDownvotesByPostId(postId);
         return new ResponseEntity<List<Downvote>>(dv, HttpStatus.OK); 
     }
     
-    @PostMapping("/downvotes/add-downvote")
+    @PostMapping("/add-downvote")
     public ResponseEntity<Downvote> save(@RequestBody Downvote downvote) throws IOException {
 
         Downvote r = new Downvote(); 
@@ -43,7 +44,7 @@ public class DownvoteController {
         return new ResponseEntity<Downvote>(responseObject, HttpStatus.OK);
     }
 	
-    @DeleteMapping("/downvotes/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Downvote> delete(@PathVariable("id") int id) {
         dvservice.deleteDownvote(id);
         return new ResponseEntity<Downvote>(HttpStatus.OK);

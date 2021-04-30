@@ -22,11 +22,12 @@ import com.revature.service.ResponseService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/responses")
 public class ResponseController {
 
     @Autowired
     private ResponseService rservice; 
+
 
     @GetMapping("/responses/{postId}")
     public ResponseEntity<List<Response>> getresponsesbypostid(@PathVariable("postId") int postId) { 
@@ -34,7 +35,7 @@ public class ResponseController {
         return new ResponseEntity<List<Response>>(rs, HttpStatus.OK); 
     }
 
-    @PostMapping("/responses/submit-response")
+    @PostMapping("/submit-response")
     public ResponseEntity<Response> save(@RequestBody Response response) throws IOException {
 
         Response r = new Response(); 
@@ -49,20 +50,20 @@ public class ResponseController {
         return new ResponseEntity<Response>(responseObject, HttpStatus.OK);
     }
 
-    @PutMapping("/responses/update")
+    @PutMapping("/update")
     public ResponseEntity<Response> put(@RequestBody Response response) {
         Response updated = rservice.updateResponse(response);
         System.out.println("test" + response);
         return new ResponseEntity<Response>(updated, HttpStatus.OK);
     }
     
-    @DeleteMapping("/responses/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Response> delete(@PathVariable("id") Integer id) {
         rservice.deleteResponse(id);
         return new ResponseEntity<Response>(HttpStatus.OK);
     }
     
-    @GetMapping("/response/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Response> get(@PathVariable("id") Integer id) {
     	Response response = rservice.getResponseById(id);
     	return new ResponseEntity<Response> (response, HttpStatus.OK);

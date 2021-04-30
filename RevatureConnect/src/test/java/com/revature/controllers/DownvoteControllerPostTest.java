@@ -15,6 +15,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Downvote;
+import com.revature.models.Posts;
+import com.revature.models.User;
 import com.revature.service.DownvoteService;
 
 @RunWith(SpringRunner.class)
