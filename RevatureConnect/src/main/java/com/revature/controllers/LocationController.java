@@ -45,6 +45,7 @@ public class LocationController {
 	public ResponseEntity<Object> createNewLocation(@PathVariable(value = "city") String city, @PathVariable(value = "state") String state) {
 		
 		Location locToSave = new Location(city, state);
+
 		Location locSaved = locServ.save(locToSave);
 
 
