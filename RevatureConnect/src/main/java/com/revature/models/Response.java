@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -50,10 +51,10 @@ public @Data class Response {
     private String username;
     
 	@ManyToOne(fetch = FetchType.LAZY, optional=false)
-	  @JoinColumns({
+	@JoinColumns({
 		    @JoinColumn(name = "userId", referencedColumnName="userId", insertable=false, updatable=false),
 			@JoinColumn(name = "username", referencedColumnName="username", insertable=false, updatable=false)
-	  })
+	  		})
 	@JsonBackReference
 	private User user;
     

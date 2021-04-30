@@ -3,7 +3,6 @@ package com.revature.models;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,12 +14,14 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Users")
 @NoArgsConstructor
+@AllArgsConstructor
 public @Data class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -50,11 +51,17 @@ public @Data class User implements Serializable{
 	@JsonManagedReference
 	private List<Response> response;
 	
+	
+	//================ group 4 edits ======
+	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+	@JsonManagedReference
+	private List<Posts> posts;
+	//================ 
+	
+	
 	public User(String email) {
 		this.email = email;
-
 	}
-	
 
 	public User(String email, String password) {
 		this.email=email;
@@ -66,6 +73,6 @@ public @Data class User implements Serializable{
 		this.email = email;
 		this.username = username;
 		this.password = password;
-	}
-
+	} 
+	
 }
