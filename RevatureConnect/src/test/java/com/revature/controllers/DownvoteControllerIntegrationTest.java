@@ -22,9 +22,6 @@ import com.revature.repositories.ResponseRepository;
 @DataJpaTest
 public class DownvoteControllerIntegrationTest {
 	
-	Posts p = new Posts();
-	User u = new User();
-	
 	@Autowired
 	private TestEntityManager entityManager; 
 	
@@ -35,12 +32,12 @@ public class DownvoteControllerIntegrationTest {
 	@Test
 	public void whenFindByPostId_thenReturnDownvotes() {
 		//given - sets Response object to persist in mock database
-		Downvote downvote = new Downvote(p, u);
+		Downvote downvote = new Downvote(1, 1);
 		entityManager.persist(downvote);
 		entityManager.flush();
 		
 		//when - method to run
-		List<Downvote> found = dvrepo.getDownvotesByPostId(p);
+		List<Downvote> found = dvrepo.getDownvotesByPostId(1);
 		
 		//then - asserts that the method returns the correct Content
 		for (Downvote f : found) {

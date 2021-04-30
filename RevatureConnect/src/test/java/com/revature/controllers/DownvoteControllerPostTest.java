@@ -23,9 +23,6 @@ import com.revature.service.DownvoteService;
 @WebMvcTest(DownvoteController.class)
 public class DownvoteControllerPostTest {
 	
-	Posts p = new Posts();
-	User u = new User();
-	
 	@Autowired 
 	MockMvc mvc;
 	
@@ -44,8 +41,8 @@ public class DownvoteControllerPostTest {
 	public void submitDownvoteTest() throws Exception {
 		// set Response object
 		Downvote dv = new Downvote();
-		dv.setPostId(p);
-		dv.setUserId(u);
+		dv.setPostId(1);
+		dv.setUserId(1);
 		
 		mvc.perform(post("/api/v1/downvotes/add-downvote")
 				.contentType(MediaType.APPLICATION_JSON)
@@ -58,8 +55,8 @@ public class DownvoteControllerPostTest {
 		// set Response object
 		Downvote dv = new Downvote();
 		dv.setId(1);
-		dv.setPostId(p);
-		dv.setUserId(u);
+		dv.setPostId(1);
+		dv.setUserId(1);
 		
 		// insert Response object into mock database
 		mvc.perform(post("/api/v1/downvotes/add-downvote")
