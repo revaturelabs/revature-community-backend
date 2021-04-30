@@ -54,4 +54,10 @@ public class UserService {
 		return userRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
 	}
 
+	public User login(User user) throws ResourceNotFoundException {
+		Example<User> userEx = Example.of(user);
+		User userLoggedIn = userRepo.findOne(userEx).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+		return userLoggedIn;
+	}
+
 }
