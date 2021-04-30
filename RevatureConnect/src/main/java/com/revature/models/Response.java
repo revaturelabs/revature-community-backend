@@ -55,6 +55,7 @@ public @Data class Response {
 		    @JoinColumn(name = "userId", referencedColumnName="userId", nullable=false, insertable=false, updatable=false),
 			@JoinColumn(name = "username", referencedColumnName="username", nullable=false, insertable=false, updatable=false)
 	  })
+
 	@JsonBackReference
 	private User user;
 	
