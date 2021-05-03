@@ -1,6 +1,5 @@
 package com.revature.controllers;
 
-import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.User;
@@ -53,17 +51,8 @@ public class UserController {
 	
 		//userToAdd.setRole(RoleTitle.User);
 		User userSaved = userServ.save(userToAdd);
-
-		//creating path to the user that was saved
-		URI userURI = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}")
-				.buildAndExpand(userSaved.getId()) 	
-				.toUri();
 		
-		//sending the path to the user in the response rather than the user obj itself
-		//if you need to access the user after creating it, you can make a quick get request using this URI
-		//If it turns out we are always immediately using the user object in the front end we can change this method
-		return ResponseEntity.created(userURI).build();
+		return ResponseEntity.ok().body(userSaved);
 	}
 
 	@DeleteMapping("/remove/{name}")

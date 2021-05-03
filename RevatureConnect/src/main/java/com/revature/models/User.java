@@ -25,6 +25,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public @Data class User implements Serializable{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "userId", nullable = false)
@@ -53,7 +54,7 @@ public @Data class User implements Serializable{
 	@Column(name = "role_id")
 	private Integer roleId;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "role_id", referencedColumnName = "role_id", insertable = false, updatable = false)
 	private Role role;
 
@@ -80,7 +81,6 @@ public @Data class User implements Serializable{
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.roleId = roleId;
-		this.role = role;
 	}
 	
 }

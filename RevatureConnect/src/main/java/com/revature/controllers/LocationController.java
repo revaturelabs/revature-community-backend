@@ -1,6 +1,5 @@
 package com.revature.controllers;
 
-import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Location;
@@ -49,19 +47,7 @@ public class LocationController {
 		Location locSaved = locServ.save(locToSave);
 
 
-		//creating path to the location that was saved
-
-		URI locationURI = ServletUriComponentsBuilder.fromPath("")
-				.path("/{id}")
-				.buildAndExpand(locSaved.getId())
-
-				.toUri();
-		
-		//sending the path to the location in the response rather than the location obj itself
-		//if you need to access the location after creating it, you can make a quick get request using this URI
-		//If it turns out we are always immediately using the location object in the front end we can change this method
-
-		return ResponseEntity.created(locationURI).build();
+		return ResponseEntity.ok().body(locSaved);
 		
 	}
 
