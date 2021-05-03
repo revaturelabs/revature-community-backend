@@ -63,7 +63,7 @@ public @Data class User implements Serializable{
 	private List<Response> response;
 
 	//================ group 4 edits ======
-	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="userId", fetch = FetchType.LAZY)
 	@JsonManagedReference
 	private List<Posts> posts;
 	//================ 

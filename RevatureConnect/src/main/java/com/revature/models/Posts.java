@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -49,8 +50,14 @@ public @Data class Posts {
     @Column(name = "userId")
     private Integer userId;
     
+    @Column(name="username")
+    private String username;
+    
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "userId", referencedColumnName = "userId", insertable = false, updatable = false)
+	@JoinColumns({
+		@JoinColumn(name = "userId", referencedColumnName = "userId", insertable = false, updatable = false),
+		@JoinColumn(name = "username", referencedColumnName="username", nullable=false, insertable=false, updatable=false)
+	 	}) 
 	@JsonBackReference
 	private User user;
 	//==========================
