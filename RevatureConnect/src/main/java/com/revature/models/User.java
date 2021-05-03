@@ -27,12 +27,12 @@ import lombok.NoArgsConstructor;
 public @Data class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "userId", nullable=false)
+	@Column(name = "userId", nullable = false)
 	private Integer id;
-	@Column(unique = true, nullable=false)
+	@Column(unique = true, nullable = false)
 	private String email;
-	
-	@Column(name="username", nullable=false)
+
+	@Column(name = "username", nullable = false)
 	private String username;
 //	@ColumnTransformer(
 //		    read =  "pgp_sym_decrypt(" +
@@ -44,20 +44,23 @@ public @Data class User implements Serializable{
 //		            "    'encrypt.key'" +
 //		            ") "
 //		)
-	@Column(name = "pass", nullable=false)
 	private String password;
+	
 	private String firstName;
+	
 	private String lastName;
 	
+	@Column(name = "role_id")
+	private Integer roleId;
+
 	@ManyToOne
-	@JoinColumn(name="role_id")
+	@JoinColumn(name = "role_id", referencedColumnName = "role_id", insertable = false, updatable = false)
 	private Role role;
-	
-	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	@JsonManagedReference
 	private List<Response> response;
-	
-	
+
 	//================ group 4 edits ======
 	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
 	@JsonManagedReference
@@ -69,16 +72,15 @@ public @Data class User implements Serializable{
 		this.email = email;
 	}
 
-	public User(String email, String password) {
-		this.email=email;
-		this.password=password;
-	}
-
-	public User(Integer id, String email, String username, String password) {
-		this.id = id;
+	public User(String email, String username, String password, String firstName, String lastName,
+			Integer roleId, Role role) {
 		this.email = email;
 		this.username = username;
 		this.password = password;
-	} 
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.roleId = roleId;
+		this.role = role;
+	}
 	
 }

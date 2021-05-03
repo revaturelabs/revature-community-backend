@@ -51,6 +51,7 @@ public class UserController {
 	@PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Object> createNewUser(@RequestBody User userToAdd) {
 	
+		//userToAdd.setRole(RoleTitle.User);
 		User userSaved = userServ.save(userToAdd);
 
 		//creating path to the user that was saved
