@@ -16,13 +16,15 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Users")
 @NoArgsConstructor
-public @Data class User implements Serializable {
+@AllArgsConstructor
+public @Data class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "userId", nullable = false)
@@ -59,6 +61,17 @@ public @Data class User implements Serializable {
 	@JsonManagedReference
 	private List<Response> response;
 
+	//================ group 4 edits ======
+	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+	@JsonManagedReference
+	private List<Posts> posts;
+	//================ 
+	
+	
+	public User(String email) {
+		this.email = email;
+	}
+
 	public User(String email, String username, String password, String firstName, String lastName,
 			Integer roleId, Role role) {
 		this.email = email;
@@ -69,6 +82,5 @@ public @Data class User implements Serializable {
 		this.roleId = roleId;
 		this.role = role;
 	}
-
 	
 }

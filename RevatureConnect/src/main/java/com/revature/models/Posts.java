@@ -1,5 +1,6 @@
 package com.revature.models;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,12 +13,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "post")
 @NoArgsConstructor
+@AllArgsConstructor
 public @Data class Posts {
 
 	@Id
@@ -39,12 +44,22 @@ public @Data class Posts {
 	@Column(name = "category_type")
 	private CategoryType categoryType;
 
-	
 	//Constructor
+	//========================
+    @Column(name = "userId")
+    private Integer userId;
+    
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "userId", referencedColumnName = "userId", insertable = false, updatable = false)
+	@JsonBackReference
+	private User user;
+	//==========================
+	
 	public Posts(String title, String content, Location locationId, CategoryType categoryType) {
 		this.title = title;
 		this.content = content;
 		this.locationId = locationId;
 		this.categoryType = categoryType;
 	}
+
 }

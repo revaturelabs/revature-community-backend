@@ -23,16 +23,22 @@ public @Data class Upvote {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer upvoteId;
 	
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "post_id", nullable = false)
-	private Posts postId;
+	@Column(name = "postId")
+	private int postId;
 	
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "user_id", nullable = false)
-	private User userId;
+	@Column(name = "userId")
+	private int userId;
 	
-	public Upvote(Posts postId, User userId) {
+	public Upvote(int postId, int userId) {
 		this.postId = postId;
 		this.userId = userId;
 	}
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "postId", referencedColumnName="post_id", nullable=false, insertable=false, updatable=false)
+	private Posts post;
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "userId", referencedColumnName="userId", nullable=false, insertable=false, updatable=false)
+	private User user;
 }
