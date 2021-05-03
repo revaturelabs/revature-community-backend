@@ -31,4 +31,8 @@ public class PostsService {
 
 	}
 
+	public List<Posts> getPostsByLocationId(int locationId) {
+        List<Posts> postsByLocationId = postsRepository.getPostsByLocationId(locationId);
+        return postsByLocationId;
+    }
 }
