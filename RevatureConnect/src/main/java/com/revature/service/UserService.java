@@ -38,9 +38,9 @@ public class UserService {
 	}
 
 	// use to remove a user from the db
-	public Map<String, Boolean> remove(String name) throws ResourceNotFoundException {
+	public Map<String, Boolean> remove(String email) throws ResourceNotFoundException {
 
-		User userToDel = userRepo.findOne(Example.of(new User(name)))
+		User userToDel = userRepo.findOne(Example.of(new User(email, "", "", "", "", null, null)))
 				.orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
 		userRepo.delete(userToDel);

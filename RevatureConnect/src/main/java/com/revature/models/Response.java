@@ -31,7 +31,6 @@ public @Data class Response {
 		this.username= username;
 	}
 
-	
 	@Id
     @Column(name = "id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
