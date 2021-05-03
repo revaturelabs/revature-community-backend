@@ -34,22 +34,17 @@ public class ResponseControllerIntegrationTest {
 	@Test
 	public void whenFindByPostId_thenReturnResponses() {
 		//given - sets Response object to persist in mock database
-		Location loc = new Location(1, "Chicago", "Illinois");
-//		entityManager.persist(loc);
-	
-		
-		Posts id = new Posts("hi", "max", loc, CategoryType.Entertainment);
-//		entityManager.persist(id);
+
 
 	
-		Response response = new Response("This is a test", id, 1);
+		Response response = new Response("This is a test", 1, 1, "user");
 		
 		entityManager.persist(response);
 		entityManager.flush();
 		
 //		Mockito.when(rrepo.getResponsesByPostId(id).thenReturn(response.getContent()));
 		//when - method to run
-		List<Response> found = rrepo.getResponsesByPostId(id);
+		List<Response> found = rrepo.getResponsesByPostId(1);
 		
 		//then - asserts that the method returns the correct Content
 		for (Response f : found) {

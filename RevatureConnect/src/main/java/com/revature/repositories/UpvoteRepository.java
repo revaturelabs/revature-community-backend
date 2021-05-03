@@ -14,5 +14,5 @@ import com.revature.models.Upvote;
 public interface UpvoteRepository extends JpaRepository<Upvote, Integer>{
 
     @Query(value = "SELECT * FROM upvote WHERE upvote.post_id = :postId", nativeQuery = true)
-    List<Upvote> getUpvotesByPostId(@Param("postId") Posts postId);
+    List<Upvote> getUpvotesByPostId(@Param("postId") int postId);
 }

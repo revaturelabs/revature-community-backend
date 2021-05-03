@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.models.Posts;
 import com.revature.models.Upvote;
 import com.revature.service.UpvoteService;
 
@@ -45,7 +44,7 @@ public class UpvoteController {
 	}
 	
 	@GetMapping("/{postId}")
-    public ResponseEntity<List<Upvote>> getUpvotesByPostId(@PathVariable("postId") Posts postId) { 
+    public ResponseEntity<List<Upvote>> getUpvotesByPostId(@PathVariable("postId") int postId) { 
         List<Upvote> us = userv.getUpvotesByPostId(postId);
         return new ResponseEntity<List<Upvote>>(us, HttpStatus.OK); 
     }

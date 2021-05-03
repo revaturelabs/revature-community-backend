@@ -33,19 +33,18 @@ public @Data class Posts {
 	@Column(name = "title")
 	private String title;
 
-	@Column(name = "content")
+	@Column(name = "content", columnDefinition = "text")
 	private String content;
-
+	
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-
 	@JoinColumn(name = "location_id", nullable = false)
-
 	private Location locationId;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "category_type")
 	private CategoryType categoryType;
 
+	//Constructor
 	//========================
     @Column(name = "userId")
     private Integer userId;
@@ -55,7 +54,6 @@ public @Data class Posts {
 	@JsonBackReference
 	private User user;
 	//==========================
-	
 	
 	public Posts(String title, String content, Location locationId, CategoryType categoryType) {
 		this.title = title;

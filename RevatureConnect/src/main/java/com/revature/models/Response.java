@@ -31,7 +31,6 @@ public @Data class Response {
 		this.username= username;
 	}
 
-	
 	@Id
     @Column(name = "id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -51,15 +50,16 @@ public @Data class Response {
     private String username;
     
 	@ManyToOne(fetch = FetchType.LAZY, optional=false)
-	@JoinColumns({
-		    @JoinColumn(name = "userId", referencedColumnName="userId", insertable=false, updatable=false),
-			@JoinColumn(name = "username", referencedColumnName="username", insertable=false, updatable=false)
-	  		})
+	  @JoinColumns({
+		    @JoinColumn(name = "userId", referencedColumnName="userId", nullable=false, insertable=false, updatable=false),
+			@JoinColumn(name = "username", referencedColumnName="username", nullable=false, insertable=false, updatable=false)
+	  })
+
 	@JsonBackReference
 	private User user;
 	
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "post_id", referencedColumnName="post_id", insertable=false, updatable=false)
+    @JoinColumn(name = "post_id", referencedColumnName="post_id", nullable=false, insertable=false, updatable=false)
 	private Posts post;
     
 }

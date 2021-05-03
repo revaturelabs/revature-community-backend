@@ -13,6 +13,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.revature.models.Downvote;
+import com.revature.models.Posts;
+import com.revature.models.User;
 import com.revature.repositories.DownvoteRepository;
 import com.revature.repositories.ResponseRepository;
 
