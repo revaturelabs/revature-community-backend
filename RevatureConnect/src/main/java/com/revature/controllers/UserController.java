@@ -30,7 +30,6 @@ public class UserController {
 
 	@GetMapping(path = "/", produces = "application/json")
 	public List<User> getAllUsers() {
-		System.out.println(userServ.findAll());
 
 		return userServ.findAll();
 
