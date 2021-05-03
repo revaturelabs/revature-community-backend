@@ -33,9 +33,9 @@ public @Data class Posts {
 	@Column(name = "title")
 	private String title;
 
-	@Column(name = "content")
+	@Column(name = "content", columnDefinition = "text")
 	private String content;
-
+	
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "location_id", nullable = false)
 	private Location locationId;
