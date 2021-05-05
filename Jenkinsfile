@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('Checkout'){
             steps {
-                git 'https://github.com/revaturelabs/revature-community-backend.git'
+                git branch: 'doom', url: 'https://github.com/revaturelabs/revature-community-backend.git'
             }
         }
 
