@@ -29,7 +29,7 @@ pipeline {
         
         stage('Deploy'){
             steps{    
-                sh 'sudo docker run -p 9095:9095  jasdhir/employee-rest'
+                sh 'sudo docker run -p 9095:9095 revaturelabs/revature-community-backend'
             }}
     }
 }
