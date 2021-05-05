@@ -83,4 +83,13 @@ public @Data class User implements Serializable{
 		this.roleId = roleId;
 	}
 	
+	public User(int id, String email, String username, String password, String firstName, String lastName) {
+		this.id = id;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
 }

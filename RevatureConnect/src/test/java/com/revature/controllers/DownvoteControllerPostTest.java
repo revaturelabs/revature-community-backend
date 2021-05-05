@@ -41,10 +41,11 @@ public class DownvoteControllerPostTest {
 	public void submitDownvoteTest() throws Exception {
 		// set Response object
 		Downvote dv = new Downvote();
+		dv.setId(1);
 		dv.setPostId(1);
 		dv.setUserId(1);
 		
-		mvc.perform(post("/api/v1/downvotes/add-downvote")
+		mvc.perform(post("/downvotes/add-downvote")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(toJson(dv)))
 				.andExpect(status().isOk());
@@ -59,12 +60,12 @@ public class DownvoteControllerPostTest {
 		dv.setUserId(1);
 		
 		// insert Response object into mock database
-		mvc.perform(post("/api/v1/downvotes/add-downvote")
+		mvc.perform(post("/downvotes/add-downvote")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(toJson(dv)));
 		
 		// perform Delete method on Response with Id 1 in mock database, checks for success  
-		mvc.perform(delete("/api/v1/downvotes/delete/1"))
+		mvc.perform(delete("/downvotes/delete/1"))
 				.andExpect(status().isOk());
 	}
 

@@ -6,7 +6,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +51,7 @@ public class ResponseControllerPostTest {
 		r.setUsername("name");
 		
 		// insert Response object, check that method ran successfully
-		mvc.perform(post("/api/v1/responses/submit-response")
+		mvc.perform(post("/responses/submit-response")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(toJson(r)))
 				.andExpect(status().isOk());
@@ -64,7 +63,7 @@ public class ResponseControllerPostTest {
 		Response response = new Response("Testing update method",1, 1, "name");
 		
 		// insert Response object into mock database
-		mvc.perform(post("/api/v1/responses/submit-response")
+		mvc.perform(post("/responses/submit-response")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(toJson(response)));
 		
@@ -76,7 +75,7 @@ public class ResponseControllerPostTest {
 		r.setUsername("name");
 		
 		// perform update method, check that it ran successfully
-		mvc.perform(put("/api/v1/responses/update")
+		mvc.perform(put("/responses/update")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(toJson(r)))
 				.andExpect(status().isOk());
@@ -92,12 +91,12 @@ public class ResponseControllerPostTest {
 		r.setUsername("name");
 		
 		// insert Response object into mock database
-		mvc.perform(post("/api/v1/responses/submit-response")
+		mvc.perform(post("/responses/submit-response")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(toJson(r)));
 		
 		// perform Delete method on Response with Id 1 in mock database, checks for success  
-		mvc.perform(delete("/api/v1/responses/delete/1"))
+		mvc.perform(delete("/responses/delete/1"))
 				.andExpect(status().isOk());
 	}
 	
@@ -111,12 +110,12 @@ public class ResponseControllerPostTest {
 		r.setUsername("name");
 		
 		// insert Response object into mock database
-		mvc.perform(post("/api/v1/responses/submit-response")
+		mvc.perform(post("/responses/submit-response")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(toJson(r)));
 		
 		// retrieve Response with Id 1 from mock database, checks for success  
-		mvc.perform(get("/api/v1/response/1"))
+		mvc.perform(get("/responses/responses/1"))
 				.andExpect(status().isOk());
 	}
 }
