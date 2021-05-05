@@ -28,7 +28,8 @@ pipeline {
         }
         
         stage('Deploy'){
-            steps{    
+            steps{  
+                sh 'ls'
                 sh 'sudo docker run --env-file env.lis -p 9095:9095 revaturelabs/revature-community-backend'
             }}
     }
