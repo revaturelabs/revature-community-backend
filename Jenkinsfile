@@ -26,5 +26,10 @@ pipeline {
                 sh 'docker build -t revaturelabs/revature-community-backend:latest .'
             }
         }
+        
+        stage('Deploy'){
+            steps{    
+                sh 'sudo docker run -p 9095:9095  jasdhir/employee-rest'
+            }}
     }
 }
