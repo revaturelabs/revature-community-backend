@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('Checkout'){
             steps {
-                git 'https://github.com/revaturelabs/revature-community-backend/tree/main/RevatureConnect.git'
+                git branch: 'doom', url: 'https://github.com/revaturelabs/revature-community-backend.git'
             }
         }
 
@@ -26,5 +26,10 @@ pipeline {
                 sh 'docker build -t revaturelabs/revature-community-backend:latest .'
             }
         }
+        
+        stage('Deploy'){
+            steps{    
+                sh 'sudo docker run -p 9095:9095 revaturelabs/revature-community-backend'
+            }}
     }
 }
