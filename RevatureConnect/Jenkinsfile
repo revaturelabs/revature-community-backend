@@ -9,7 +9,8 @@ pipeline {
 
         stage('Build'){
             steps {
-                sh 'chmod a+x /RevatureConnect/mvnw'
+                sh 'ls'
+                sh 'chmod a+x mvnw'
                 //We can change this to false when we want to actually have the tests run during build
                 //Tests increase build time
                 sh './mvnw clean package -DskipTests=true'
