@@ -1,14 +1,14 @@
-READEME.md
+README.md
 
 /.metadata/
 
-./RevatureConnect/.mvn/
-./RevatureConnect/.settings/
-./RevatureConnect/target/
-./RevatureConnect/.project
-./RevatureConnect/.classpath
-./RevatureConnect/.factorypath
-./RevatureConnect/HELP.md
+./.mvn/
+./.settings/
+./target/
+./.project
+./.classpath
+./.factorypath
+./HELP.md
 .DS_Store
 
 
