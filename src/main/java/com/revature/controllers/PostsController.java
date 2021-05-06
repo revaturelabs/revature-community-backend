@@ -41,6 +41,11 @@ public class PostsController {
 		
 	}
 	
+	@GetMapping("/byLocation/{locationId}")
+   	public ResponseEntity<List<Posts>> getPostsByLocationId(@PathVariable("locationId") int locationId) {
+       		List<Posts> postsByLocation = postsService.getPostsByLocationId(locationId);
+        	return new ResponseEntity<>(postsByLocation, HttpStatus.OK);
+   	}
 	
 
 }
