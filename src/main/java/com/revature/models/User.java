@@ -33,18 +33,19 @@ public @Data class User implements Serializable{
 	@Column(unique = true, nullable = false)
 	private String email;
 
-	@Column(name = "username", nullable = false)
+	@Column(unique = true, name = "username", nullable = false)
 	private String username;
-//	@ColumnTransformer(
-//		    read =  "pgp_sym_decrypt(" +
-//		            "    pass, " +
-//		            "    'encrypt.key'" +
-//		            ")",
-//		    write = "pgp_sym_encrypt( " +
-//		            "    ?, " +
-//		            "    'encrypt.key'" +
-//		            ") "
-//		)
+	@ColumnTransformer(
+		    read =  "pgp_sym_decrypt(" +
+		            "    pass, " +
+		            "    'encrypt.key'" +
+		            ")",
+		    write = "pgp_sym_encrypt( " +
+		            "    ?, " +
+		            "    'encrypt.key'" +
+		            ") "
+		)
+	@Column(columnDefinition = "bytea")
 	private String password;
 	
 	private String firstName;
