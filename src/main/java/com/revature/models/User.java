@@ -40,11 +40,11 @@ public @Data class User implements Serializable{
 	@ColumnTransformer(
 		    read =  "pgp_sym_decrypt(" +
 		            "    password, " +
-		            System.getenv("pgpkey") +
+		       	    "'pgpkey'" +
 		            ")",
 		    write = "pgp_sym_encrypt( " +
 		            "    ?, " +
-		            System.getenv("pgpkey") +
+		            "'pgpkey'" +
 		            ") "
 		)
 	@Column(columnDefinition = "bytea")
