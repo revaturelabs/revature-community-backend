@@ -37,17 +37,17 @@ public @Data class User implements Serializable{
 
 	@Column(unique = true, name = "username", nullable = false)
 	private String username;
-	@ColumnTransformer(
-		    read =  "pgp_sym_decrypt(" +
-		            "    password, " +
-		       	    "'pgpkey'" +
-		            ")",
-		    write = "pgp_sym_encrypt( " +
-		            "    ?, " +
-		            "'pgpkey'" +
-		            ") "
-		)
-	@Column(columnDefinition = "bytea")
+	//@ColumnTransformer(
+	//	    read =  "pgp_sym_decrypt(" +
+	//	            "    password, " +
+	//	       	    "'pgpkey'" +
+	//	            ")",
+	//	    write = "pgp_sym_encrypt( " +
+	//	            "    ?, " +
+	//	            "'pgpkey'" +
+	//	            ") "
+	//	)
+	//@Column(columnDefinition = "bytea")
 	private String password;
 	
 	private String firstName;
