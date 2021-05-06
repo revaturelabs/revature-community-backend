@@ -9,6 +9,7 @@ public class RevatureConnectApplication {
 	public static void main(String[] args) {
 		System.out.println("This is our Revature Connect App");
 		SpringApplication.run(RevatureConnectApplication.class, args);
+		System.out.println("This is after the app");
 	}
 
 }
