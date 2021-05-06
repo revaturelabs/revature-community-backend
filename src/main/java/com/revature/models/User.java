@@ -39,7 +39,7 @@ public @Data class User implements Serializable{
 	private String username;
 	@ColumnTransformer(
 		    read =  "pgp_sym_decrypt(" +
-		            "    pass, " +
+		            "    password, " +
 		            "    'encrypt.key'" +
 		            ")",
 		    write = "pgp_sym_encrypt( " +
