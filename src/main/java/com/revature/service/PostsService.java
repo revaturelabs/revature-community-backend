@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.revature.models.Posts;
 import com.revature.repositories.PostsRepository;
 
@@ -31,4 +30,8 @@ public class PostsService {
 
 	}
 
+	public List<Posts> getPostsByLocationId(int locationId) {
+		List<Posts> postsByLocationId = postsRepository.getPostsByLocationId(locationId);
+		return postsByLocationId;
+	}
 }
